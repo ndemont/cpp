@@ -5,6 +5,7 @@
 # include <iomanip>
 # include <vector>
 # include <iostream>
+# include <cstdlib>
 # include <list>
 
 class	Contact
