@@ -6,11 +6,11 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 17:27:58 by ndemont           #+#    #+#             */
-/*   Updated: 2021/07/06 11:57:38 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/07/06 17:51:13 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "deathnote.h"
+#include "phonebook.hpp"
 
 using namespace std;
 
@@ -18,16 +18,25 @@ int main()
 {
 	string			command("INIT");
 	PhoneBook		deathnote;
-	int				nb_of_contacts(0);
 
+	cout << endl;
+	cout << "Welcome to the Death Note. You can use the following commands:" << endl << endl;
+	cout << "ADD:    to add a new contact." << endl;
+	cout << "SEARCH: to preview contacts and choose the one you want more details about." << endl;
+	cout << "EXIT:   to exit the Death Note." << endl << endl;
+	cout << "Type your command: ";
 	getline(cin, command);
+	cout << endl;
 	while ((command != "EXIT"))
 	{
 		if (command == "ADD")
-			add(deathnote, &nb_of_contacts);
+			deathnote.add_contact();
 		if (command == "SEARCH")
-			search(deathnote, &nb_of_contacts);
+			deathnote.search_contact();
+		cout << endl;
+		cout << "Type your command: ";
 		getline(cin, command);
+		cout << endl;
 	}
 	return 0;
 }

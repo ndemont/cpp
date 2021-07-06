@@ -1,6 +1,7 @@
 NAME		= deathnote
 CC			= clang++
 RM			= rm -rf
+CLEAR		= \033[2K\c
 
 SRCS_DIR	= .
 INC_DIR		= .
