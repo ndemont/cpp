@@ -27,8 +27,8 @@ class	PhoneBook
 {
 	public:
 
-	PhoneBook();
-	~PhoneBook();
+	//PhoneBook();
+	//~PhoneBook();
 
 	std::list<Contact>	m_phonebook;
 };
