@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 17:27:58 by ndemont           #+#    #+#             */
-/*   Updated: 2021/07/05 18:17:05 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/07/06 11:57:38 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 using namespace std;
 
-int main(int ac, char **av)
+int main()
 {
 	string			command("INIT");
-	list<Contact>	deathnote;
-	int				nb_of_people(0);
+	PhoneBook		deathnote;
+	int				nb_of_contacts(0);
 
 	getline(cin, command);
 	while ((command != "EXIT"))
 	{
 		if (command == "ADD")
-			add(&deathnote, &nb_of_people);
+			add(deathnote, &nb_of_contacts);
 		if (command == "SEARCH")
-			search(&deathnote, &nb_of_people);
+			search(deathnote, &nb_of_contacts);
 		getline(cin, command);
 	}
 	return 0;

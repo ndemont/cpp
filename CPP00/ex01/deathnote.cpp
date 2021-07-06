@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:46:08 by ndemont           #+#    #+#             */
-/*   Updated: 2021/07/05 22:44:32 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/07/06 11:55:53 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Contact::~Contact()
 {
 }
 
-void add(list<Contact> *deathnote, int *nb_of_people)
+void add(PhoneBook deathnote, int *nb_of_contacts)
 {
 	string	firstname;
 	string	lastname;
@@ -49,17 +49,17 @@ void add(list<Contact> *deathnote, int *nb_of_people)
 	getline(cin, lastname);
 	cout << "Enter your nickname:" << endl;
 	getline(cin, nickname);
-	cout << "Enter your phone number:" << endl;
+	cout << "Enter your phone nucmber:" << endl;
 	getline(cin, age);
 	cout << "Enter your darkest secret:" << endl;
 	getline(cin, secret);
 	cout << "New contact registered." << endl;
 	Contact new_person(firstname, lastname, nickname, age, secret);
-	deathnote->push_back(new_person);
-	if (*nb_of_people == 8)
-		deathnote->pop_front();
+	deathnote.m_phonebook.push_back(new_person);
+	if (*nb_of_contacts == 8)
+		deathnote.m_phonebook.pop_front();
 	else
-		*nb_of_people = *nb_of_people + 1;
+		*nb_of_contacts = *nb_of_contacts + 1;
 }
 
 void	display_string(string str)
@@ -84,18 +84,15 @@ void	display_string(string str)
 	}
 }
 
-//void	display_contact()
-
-void	search(list<Contact> *deathnote, int *nb_of_people)
+void	search(PhoneBook deathnote, int *nb_of_contacts)
 {
 	list<Contact>::iterator	contact;
 	int						i;
 	int						index;
-	char					*buffer;
 
 	cout << "|     index|first name| last name|  nickname|" << endl;
 	i = 0;
-	for (contact = deathnote->begin(); contact != deathnote->end(); contact++)
+	for (contact = deathnote.m_phonebook.begin(); contact != deathnote.m_phonebook.end(); contact++)
 	{
 		printf("| %9i", i); 
 		display_string(contact->m_firstname);
@@ -111,7 +108,7 @@ void	search(list<Contact> *deathnote, int *nb_of_people)
 		cout << "Wrong index." << endl;
 	else
 	{
-		while (index < *nb_of_people)
+		while (index < *nb_of_contacts)
 		{
 			contact--;
 			index++;

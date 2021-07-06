@@ -23,8 +23,18 @@ class	Contact
 	std::string	m_darkestsecret;
 };
 
-void add(std::list<Contact> *deathnote, int *nb_of_people);
-void search(std::list<Contact> *deathnote, int *nb_of_people);
+class	PhoneBook
+{
+	public:
+
+	PhoneBook();
+	~PhoneBook();
+
+	std::list<Contact>	m_phonebook;
+};
+
+void add(PhoneBook phonebook, int *nb_of_contacts);
+void search(PhoneBook phonebook, int *nb_of_contacts);
 void exit(void);
 
 #endif
