@@ -14,22 +14,22 @@ Account::~Account(void)
 
 int	Account::getNbAccounts(void)
 {
-	return (_nbAccounts);
+	return _nbAccounts;
 }
 
 int	Account::getTotalAmount(void)
 {
-	return (_totalAmount);
+	return _totalAmount;
 }
 
 int	Account::getNbDeposits(void)
 {
-	return (_totalNbDeposits);
+	return _totalNbDeposits;
 }
 
 int	Account::getNbWithdrawals(void)
 {
-	return (_totalNbWithdrawals);
+	return _totalNbWithdrawals;
 }
 
 void	Account::displayAccountsInfos(void)
@@ -48,14 +48,19 @@ void	Account::makeDeposit( int deposit )
 
 bool	Account::makeWithdrawal( int withdrawal )
 {
-	_totalAmount -= withdrawal;
-	_totalNbWithdrawals ++;
-	return ((_totalAmount));
+	if (withdrawal <= _totalAmount)
+	{
+		_totalAmount -= withdrawal;
+		_totalNbWithdrawals ++;
+		return true;
+	}
+	else
+		return false;
 }
 	
 int		Account::checkAmount( void ) const
 {
-	return (_totalAmount);
+	return _totalAmount;
 }
 
 void	Account::displayStatus( void ) const
