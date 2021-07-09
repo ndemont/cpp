@@ -1,10 +1,13 @@
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
+#include <time.h>
+
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
-int	Account::_totalNbWithdrawals =0;
+int	Account::_totalNbWithdrawals = 0;
 
 Account::Account(int initial_deposit)
 {
@@ -60,8 +63,8 @@ void	Account::makeDeposit( int deposit )
 	std::cout << "p_amount:" << _amount << ";";
 	std::cout << "deposit:" << deposit << ";"; 
 	Account::_totalAmount += deposit;
-	_amount += deposit;
 	Account::_totalNbDeposits++;
+	_amount += deposit;
 	_nbDeposits++;
 	std::cout << "amount:" << _amount << ";";
 	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
@@ -98,7 +101,24 @@ int		Account::checkAmount( void ) const
 
 void	_displayTimestamp( void )
 {
-	std::cout << "[19920104_091532]" << std::endl;
+	std::time_t result = std::time(nullptr);
+    struct tm *timeinfo= std::localtime(&result);
+	std::cout << "[20" << timeinfo->tm_year - 100;
+	if (timeinfo->tm_mon + 1 < 10)
+		std::cout << "0";
+	std::cout << timeinfo->tm_mon + 1;
+	if (timeinfo->tm_mday < 10)
+		std::cout << "0";
+	std::cout << timeinfo->tm_mday << "_";
+	if (timeinfo->tm_hour < 10)
+		std::cout << "0";
+	std::cout << timeinfo->tm_hour;
+	if (timeinfo->tm_min < 10)
+		std::cout << "0";
+	std::cout << timeinfo->tm_min;
+	if (timeinfo->tm_sec < 10)
+		std::cout << "0";
+	std::cout << timeinfo->tm_sec << "]" << std::endl;
 }
 
 void	Account::displayStatus( void ) const
