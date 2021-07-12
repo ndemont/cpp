@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 char	megaphone(char letter)
 {
 	char megaphone;
@@ -21,7 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 	{
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
 	i = 1;
@@ -31,11 +29,11 @@ int	main(int ac, char **av)
 		while (av[i][j])
 		{
 			letter = megaphone(av[i][j]);
-			cout << letter;
+			std::cout << letter;
 			j++;
 		}
 		i++;
 	}
-	cout << endl;
+	std::cout << std::endl;
 	return 0;
 }

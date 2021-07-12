@@ -16,19 +16,18 @@ class	Contact
 	~Contact();
 
 	void	create_contact(int index);
-	void	display_preview(void);
-	void	display_all(void);
-	int		get_index(void);
-	void	lower_index(void);
+	void	display_preview(void) const;
+	void	display_all(void) const;
+	int		get_index(void) const;
 
 	private:
 
-	int			m_index;
-	std::string	m_firstname;
-	std::string	m_lastname;
-	std::string	m_nickname;
-	std::string	m_phonenumber;
-	std::string	m_darkestsecret;
+	int			_index;
+	std::string	_firstname;
+	std::string	_lastname;
+	std::string	_nickname;
+	std::string	_phonenumber;
+	std::string	_darkestsecret;
 };
 
 #endif

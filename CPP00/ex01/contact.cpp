@@ -1,15 +1,13 @@
 #include "phonebook.hpp"
 
-using namespace std;
-
 Contact::Contact()
 {
-	m_index = -1;
-	m_firstname = "no first name";
-	m_lastname = "no last name";
-	m_nickname = "no nick name";
-	m_phonenumber = "no phone number"; 
-	m_darkestsecret = "no secret";
+	_index = -1;
+	_firstname = "no first name";
+	_lastname = "no last name";
+	_nickname = "no nick name";
+	_phonenumber = "no phone number"; 
+	_darkestsecret = "no secret";
 }
 
 Contact::~Contact()
@@ -18,65 +16,60 @@ Contact::~Contact()
 
 void Contact::create_contact(int index)
 {
-	cout << "Enter your first name: ";
-	getline(cin, m_firstname);
-	cout << "Enter your last name: ";
-	getline(cin, m_lastname);
-	cout << "Enter your nickname: ";
-	getline(cin, m_nickname);
-	cout << "Enter your phone number: ";
-	getline(cin, m_phonenumber);
-	cout << "Enter your darkest secret: ";
-	getline(cin, m_darkestsecret);
-	cout << "New contact registered." << endl;
-	m_index = index;
+	std::cout << "Enter your first name: ";
+	getline(std::cin, _firstname);
+	std::cout << "Enter your last name: ";
+	getline(std::cin, _lastname);
+	std::cout << "Enter your nickname: ";
+	getline(std::cin, _nickname);
+	std::cout << "Enter your phone number: ";
+	getline(std::cin, _phonenumber);
+	std::cout << "Enter your darkest secret: ";
+	getline(std::cin, _darkestsecret);
+	std::cout << "New contact registered." << std::endl;
+	_index = index;
 }
 
-void	display_str(string str)
+void	display_str(std::string str)
 {
-	string	trunc;
+	std::string	trunc;
 
-	cout << "|";
+	std::cout << "|";
 	if (str.size() == 10)
-		cout << str;
+		std::cout << str;
 	else if (str.size() > 10)
 	{
 		trunc = str.substr(0, 9);
-		cout << trunc;
-		cout << ".";
+		std::cout << trunc;
+		std::cout << ".";
 	}
 	else
 	{
 		for (unsigned long i = 0; i < 10 - str.size(); i++)
-			cout << " ";
-		cout << str;
+			std::cout << " ";
+		std::cout << str;
 	}
 }
 
-void Contact::display_preview(void)
+void Contact::display_preview(void) const
 {
-	cout << "|         " << m_index;
-	display_str(m_firstname);
-	display_str(m_lastname);
-	display_str(m_nickname);
-	cout << "|" << endl;
+	std::cout << "|         " << _index;
+	display_str(_firstname);
+	display_str(_lastname);
+	display_str(_nickname);
+	std::cout << "|" << std::endl;
 }
 
-void Contact::display_all(void)
+void Contact::display_all(void) const
 {
-	cout << m_firstname << endl;
-	cout << m_lastname << endl;
-	cout << m_nickname << endl;
-	cout << m_phonenumber << endl;
-	cout << m_darkestsecret << endl;
+	std::cout << _firstname << std::endl;
+	std::cout << _lastname << std::endl;
+	std::cout << _nickname << std::endl;
+	std::cout << _phonenumber << std::endl;
+	std::cout << _darkestsecret << std::endl;
 }
 
-int Contact::get_index(void)
+int Contact::get_index(void) const
 {
-	return (m_index);
-}
-
-void Contact::lower_index(void)
-{
-	m_index--;
+	return (_index);
 }

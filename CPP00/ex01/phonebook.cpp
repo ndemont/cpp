@@ -1,10 +1,8 @@
 #include "phonebook.hpp"
 
-using namespace std;
-
 PhoneBook::PhoneBook()
 {
-	m_nb_of_contacts = 0;
+	_nb_of_contacts = 0;
 }
 
 PhoneBook::~PhoneBook()
@@ -13,47 +11,40 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::add_contact(void)
 {
-	if (m_nb_of_contacts < 8)
+	if (_nb_of_contacts < 8)
 	{
-		m_Phonebook[m_nb_of_contacts].create_contact(m_nb_of_contacts + 1);
-		m_nb_of_contacts++;
+		_Phonebook[_nb_of_contacts].create_contact(_nb_of_contacts + 1);
+		_nb_of_contacts++;
 	}
 	else
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			if (m_Phonebook[i].get_index() == 1)
-				m_Phonebook[i].create_contact(m_nb_of_contacts + 1);
-			m_Phonebook[i].lower_index();
-		}
-	}
+		std::cout << "Your Death Note is full. Sorry." << std::endl;
 }
 
-void	PhoneBook::search_contact(void)
+void	PhoneBook::search_contact(void) const
 {
-	string				index_str;
+	std::stringstream	ss;
+	std::string			index_str;
 	int					index_int;
-	stringstream		ss;
 
-	cout << "---------------------------------------------" << endl;
-	cout << "|     index|first name| last name|  nickname|" << endl;
-	cout << "---------------------------------------------" << endl;
-	for (int i = 0; i < m_nb_of_contacts; i++)
-		m_Phonebook[i].display_preview();
-	cout << "---------------------------------------------" << endl;
-	cout << endl << "Enter the index you are interested in: ";
-	getline(cin, index_str);
-	cout << endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
+	for (int i = 0; i < _nb_of_contacts; i++)
+		_Phonebook[i].display_preview();
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << std::endl << "Enter the index you are interested in: ";
+	getline(std::cin, index_str);
+	std::cout << std::endl;
 	ss << index_str;
 	ss >> index_int;
-	if (index_int < 1 || index_int > m_nb_of_contacts)
-		cout << "This index does not exists. Sorry" << endl;
+	if (index_int < 1 || index_int > _nb_of_contacts)
+		std::cout << "This index does not exists. Sorry." << std::endl;
 	else
 	{
 		for (int i = 0; i < 8; i++)
 		{
-			if (m_Phonebook[i].get_index() == index_int)
-				m_Phonebook[index_int - 1].display_all();
+			if (_Phonebook[i].get_index() == index_int)
+				_Phonebook[index_int - 1].display_all();
 		}
 	}
 }

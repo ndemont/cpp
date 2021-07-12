@@ -18,12 +18,12 @@ class	PhoneBook
 	~PhoneBook();
 
 	void add_contact();
-	void search_contact();
+	void search_contact() const;
 
 	private:
 
-	Contact				m_Phonebook[8];
-	int					m_nb_of_contacts;
+	Contact				_Phonebook[8];
+	int					_nb_of_contacts;
 }; 
 
 #endif
