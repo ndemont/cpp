@@ -105,7 +105,7 @@ int		Account::checkAmount( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-	std::time_t result = std::time(nullptr);
+	std::time_t result = std::time(NULL);
     struct tm *timeinfo= std::localtime(&result);
 	std::cout << "[20" << timeinfo->tm_year - 100;
 	if (timeinfo->tm_mon + 1 < 10)
