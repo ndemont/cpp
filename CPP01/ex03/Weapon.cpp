@@ -15,5 +15,6 @@ void			Weapon::setType(std::string type)
 
 std::string const &	Weapon::getType(void) const
 {
-	return _type;
+	std::string	const &ref = _type;
+	return ref;
 }
