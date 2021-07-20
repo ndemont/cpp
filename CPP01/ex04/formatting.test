@@ -1,0 +1,32 @@
+You must indent your code with 4-space tabulations. This is not the same as 4
+average spaces, we’re talking about real tabulations here.
+• Each function must be maximum 25 lines, not counting the function’s own curly
+brackets.
+• Each line must be at most 80 columns wide, comments included. Warning: a
+tabulation doesn’t count as a column, but as the number of spaces it represents.
+• Each function must be separated by a newline. Any comment or preprocessor
+instruction can be right above the function. The newline is after the previous
+function.
+• One instruction per line.
+• An empty line must be empty: no spaces or tabulations.
+• A line can never end with spaces or tabulations.
+• You can never have two consecutive spaces.
+• You need to start a new line after each curly bracket or end of control structure.
+• Unless it’s the end of a line, each comma or semi-colon must be followed by a space.
+• Each operator or operand must be separated by one - and only one - space.
+• Each C keyword must be followed by a space, except for keywords for types (such
+as int, char, float, etc.), as well as sizeof.
+• Each variable declaration must be indented on the same column for its scope.
+• The asterisks that go with pointers must be stuck to variable names.
+• One single variable declaration per line.
+• Declaration and an initialisation cannot be on the same line, except for global
+variables (when allowed), static variables, and constants.
+• Declarations must be at the beginning of a function.
+• In a function, you must place an empty line between variable declarations and the
+remaining of the function. No other empty lines are allowed in a function.
+• Multiple assignments are strictly forbidden.
+• You may add a new line after an instruction or control structure, but you’ll have
+to add an indentation with brackets or assignment operator. Operators must be at
+the beginning of a line.
+• Control structures (if, while..) must have braces, unless they contain a single line
+or a single condition.

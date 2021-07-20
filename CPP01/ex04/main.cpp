@@ -4,20 +4,17 @@
 #include <string>
 #include <cstring>
 
-void	readFile(std::string file, std::string oldStr, std::string newStr)
+void	replace(std::string file, std::string oldStr, std::string newStr)
 {
 	std::ifstream		ifs(file);
 	std::ofstream		ofs(file + ".replace");
 	std::string			content;
 	std::size_t			occurence;
 
-	(void)oldStr;
-	(void)newStr;
 	while (getline(ifs, content))
 	{
-		std::cout << content << std::endl;
 		occurence = 1;
-		while (occurence)
+		while (occurence >= 0)
 		{
 			occurence = content.find(oldStr);
 			if (occurence < content.size())
@@ -41,8 +38,18 @@ void	readFile(std::string file, std::string oldStr, std::string newStr)
 
 int main(int ac, char **av)
 {
+	std::string	empty = "";
+
 	if (ac != 4)
+	{
+		std::cout << "This program needs 3 arguments: [filename] [string1] [string2]" << std::endl;
 		return 1;
-	readFile (av[1], av[2], av[3]);
+	}
+	if (av[2] == empty || av[3] == empty)
+	{
+		std::cout << "The string should not be empty." << std::endl;
+		return 1;
+	}
+	replace(av[1], av[2], av[3]);
 	return 0;
 }

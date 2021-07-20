@@ -1,0 +1,30 @@
+The Norm has been carefully crafted to fulfill many pedagogical needs. Here are the most
+important reasons for all the choices above:
+• Sequencing: coding implies splitting a big and complex task in a long series of
+elementary instructions. All these instructions will be executed in sequence: one
+after another. A beginner that starts creating software needs a simple and clear
+architecture for their project, with a full understanding of all individual instructions
+and the precise order of execution. Cryptic language syntaxes that do multiple
+instructions apparently at the same time are confusing, functions that try to address
+multiple tasks mixed in the same portion of code are source of errors.
+The Norm asks you to create simple pieces of code, where the unique task of each
+piece can be clearly understood and verified, and where the sequence of all the
+executed instructions leaves no doubt. That’s why we ask for 25 lines maximum in
+functions, also why for, do .. while, or ternaries are forbidden.
+• Look and Feel: while exchanging with your friends and workmates during the normal peer-learning process, and also during the peer-evaluations, you do not want
+to spend time to decrypt their code, but directly talk about the logic of the piece
+of code.
+The Norm asks you to use a specific look and feel, providing instructions for the
+naming of the functions and variables, indentation, brace rules, tab and spaces at
+many places... . This will allow you to smoothly have a look at other’s codes that
+will look familiar, and get directly to the point instead of spending time to read the
+code before understanding it. The Norm also comes as a trademark. As part of the
+42 community, you will be able to recognize code written by another 42 student or
+alumni when you’ll be in the labor market.
+• Long-term vision: making the effort to write understandable code is the best way
+to maintain it. Each time that someone else, including you, has to fix a bug or
+add a new feature they won’t have to lose their precious time trying to figure out
+what it does if previously you did things in the right way. This will avoid situations
+where pieces of code stop being maintained just because it is time-consuming, and
+that can make the difference when we talk about having a successful product in the
+market. The sooner you learn to do so, the better.
