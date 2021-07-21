@@ -1,33 +1,33 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie( void )
+Zombie::Zombie(void)
 {
 	_name = randomName();
 	std::cout << _name << " has been created" << std::endl;
 	return;
 }
 
-Zombie::Zombie( std::string name ) : _name(name)
+Zombie::Zombie(std::string name) : _name(name)
 {
 	std::cout << _name << " has been created" << std::endl;
 }
 
-Zombie::~Zombie( void )
+Zombie::~Zombie(void)
 {
 	std::cout << _name << " has been destroyed" << std::endl;
 }
 
-void		Zombie::announce( void ) const
+void		Zombie::announce(void) const
 {
 	std::cout << _name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-std::string	Zombie::getName( void ) const
+std::string	Zombie::getName(void) const
 {
 	return _name;
 }
 
-std::string Zombie::randomName( void ) const
+std::string	Zombie::randomName(void) const
 {
 	std::string	list[10];
 

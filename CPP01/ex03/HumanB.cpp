@@ -8,7 +8,7 @@ HumanB::~HumanB( void )
 {
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon& weapon)
 {
 	_WeaponB = &weapon;
 }

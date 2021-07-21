@@ -12,8 +12,6 @@ public:
 	~Karen(void);
 
 	void			complain(std::string level);
-	typedef void	(Karen::*ptr)(void);
-	ptr				complaints[4];
 	std::string		levels[4];
 
 private:
@@ -22,6 +20,7 @@ private:
 	void	info(void);
 	void	warning(void);
 	void	error(void);
+	void	other(void);
 
 };
 
