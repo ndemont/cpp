@@ -38,7 +38,7 @@ public:
 
 	int		getRawBits(void) const;
 	int		getFractBits(void) const;
-	int		setRawBits(int const raw);
+	void	setRawBits(int const raw);
 	float	toFloat(void) const;
 	int		toInt(void) const;
 

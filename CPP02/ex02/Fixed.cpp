@@ -161,10 +161,9 @@ int		Fixed::getFractBits(void) const
 	return _FractBits;
 }
 
-int			Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(int const raw)
 {
 	_RawBits = raw;
-	return _RawBits;
 }
 
 float		Fixed::toFloat(void) const
