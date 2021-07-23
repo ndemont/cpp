@@ -4,7 +4,7 @@
 
 Point::Point(void) : _x(0), _y(0)
 {
-	//std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(Fixed const p1, Fixed const p2) : _x(p1), _y(p2)
@@ -16,15 +16,14 @@ Point::Point(Point const & src) : _x(src.getX()), _y(src.getY())
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-
 //DESTRUCTORS
 
 Point::~Point(void)
 {
-	//std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
-//0VERLAOD OPERATORS
+//OPERATORS
 
 Point & Point::operator=(Point const & rhs)
 {
@@ -41,17 +40,14 @@ std::ostream &	operator<<(std::ostream & o, Point const & i)
 	return o;
 }
 
-
 //GET
 
 Fixed	const Point::getX(void) const
 {
-	std::cout << "X = " << _x.toFloat() << std::endl;
 	return _x;
 }
 
 Fixed	const Point::getY(void) const
 {
-	std::cout << "Y = " << _y.toFloat() << std::endl;
 	return _y;
 }
