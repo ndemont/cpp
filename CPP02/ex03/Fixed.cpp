@@ -1,40 +1,39 @@
 #include "Fixed.hpp"
 
-
 //CONSTRUCTORS
 
 Fixed::Fixed(void) : _RawBits(0), _FractBits(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(int const i) : _RawBits(i), _FractBits(0)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called for value: " << i << std::endl;
 }
 
 Fixed::Fixed(float const f) : _RawBits(f)
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	_FractBits = roundf((f - _RawBits) * power(2, 8));
 }
 
 Fixed::Fixed(Fixed const & src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
 //DESTRUCTOR
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 //OVERLOAD
 Fixed &	Fixed::operator=(Fixed const & rhs)
 {
-	std::cout << "Assignation operator called" << std::endl;
+	//std::cout << "Assignation operator called" << std::endl;
 
 	if (this != &rhs)
 	{
@@ -167,6 +166,12 @@ int			Fixed::setRawBits(int const raw)
 	return _RawBits;
 }
 
+int			Fixed::setFractBits(int const raw)
+{
+	_FractBits = raw;
+	return _FractBits;
+}
+
 float		Fixed::toFloat(void) const
 {
 	float	f = _RawBits + (_FractBits * (power(2, -8)));
@@ -265,27 +270,27 @@ bool Fixed::operator!=(Fixed const & rhs) const
 
 //MAX & MIN
 
-Fixed & Fixed::min(Fixed const & rhs)
-{
-	Fixed static min;
+//Fixed & Fixed::min(Fixed const & rhs)
+//{
+//	Fixed static min;
 
-	if ((fix1.operator<=)(fix2))
-		min = Fixed(fix1);
-	else
-		min = Fixed(fix2);
-	return	min;
-}
+//	if ((fix1.operator<=)(fix2))
+//		min = Fixed(fix1);
+//	else
+//		min = Fixed(fix2);
+//	return	min;
+//}
 
-Fixed & Fixed::max(Fixed const & rhs)
-{
-	Fixed static max;
+//Fixed & Fixed::max(Fixed const & rhs)
+//{
+//	Fixed static max;
 
-	if ((fix1.operator>=)(fix2))
-		max = Fixed(fix1);
-	else
-		max = Fixed(fix2);
-	return	max;
-}
+//	if ((fix1.operator>=)(fix2))
+//		max = Fixed(fix1);
+//	else
+//		max = Fixed(fix2);
+//	return	max;
+//}
 
 float Fixed::min(Fixed const & fix1, Fixed const & fix2)
 {

@@ -1,4 +1,4 @@
-NAME		= fixed
+NAME		= binaryspacepartitioning
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c
