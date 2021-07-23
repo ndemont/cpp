@@ -24,6 +24,7 @@ public:
 	Fixed	operator--(int);
 
 	Fixed &	operator=(Fixed const & rhs);
+	
 	bool	operator>(Fixed const & rhs) const;
 	bool	operator<(Fixed const & rhs) const;
 	bool	operator>=(Fixed const & rhs) const;

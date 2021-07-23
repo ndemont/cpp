@@ -166,7 +166,7 @@ void	Fixed::setRawBits(int const raw)
 	_RawBits = raw;
 }
 
-float		Fixed::toFloat(void) const
+float	Fixed::toFloat(void) const
 {
 	float	f = _RawBits + (_FractBits * (power(2, -8)));
 	return f;
