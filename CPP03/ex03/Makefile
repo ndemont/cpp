@@ -1,4 +1,4 @@
-NAME		= fragtrap
+NAME		= diamondtrap
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c
@@ -7,7 +7,7 @@ SRCS_DIR	= .
 INC_DIR		= .
 OBJS_DIR	= objs
 
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CFLAGS		= -Wall -Wextra -Werror  -Wshadow -Wno-shadow -std=c++98
 IFLAGS		= -I${INC_DIR}
 
 INC			= $(shell find ${INC_DIR} -type f -name "*.h")

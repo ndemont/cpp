@@ -14,12 +14,17 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap	(DiamondTrap const & src);
 		~DiamondTrap(void);
 
-		void	whoAmI(void);
+		void		whoAmI(void) const;
+		std::string	getName(void) const;
 
-		FragTrap::_hitPoints;
-		ScavTrap::_energyPoints;
-		FragTrap::_attackDamage;
-		ScavTrap::attack;
+		using FragTrap::_hitPoints;
+		using ScavTrap::_energyPoints;
+		using FragTrap::_attackDamage;
+		using ScavTrap::attack;
+
+	private:
+
+		std::string _name;
 };
 
 #endif
