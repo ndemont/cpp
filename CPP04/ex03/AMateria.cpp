@@ -1,4 +1,4 @@
-#include "Materia.hpp"
+#include "AMateria.hpp"
 
 /* CONSTRUCTORS & DESTRUCTORS */
 AMateria::AMateria(void) : _type("Generic Materia")
