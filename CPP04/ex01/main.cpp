@@ -5,16 +5,18 @@
 
 int main()
 {
-	Animal	farm[10];
+	Animal	*farm[10];
 
 	for (int i = 0; i < 10; i++)
 	{
 		if (i % 2)
-			farm[i] = Cat();
+			farm[i] = new Cat();
 		else
-			farm[i] = Dog();
+			farm[i] = new Dog();
 		std::cout << std::endl;
 	}
+	for (int i = 0; i < 10; i++)
+		delete farm[i];
 
 	const Animal* j = new Dog();
 	std::cout << std::endl;
