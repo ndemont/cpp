@@ -11,7 +11,11 @@ class ClapTrap
 		ClapTrap(ClapTrap const & src);
 		~ClapTrap(void);
 
+		ClapTrap const & operator=(ClapTrap const & rhs);
+
 		std::string	getName(void) const;
+		int			getHitPoints(void) const;
+		int			getEnergyPoints(void) const;
 		int			getDamage(void) const;
 		void		setHitPoints(int amount);
 		void		setEnergyPoints(int amount);

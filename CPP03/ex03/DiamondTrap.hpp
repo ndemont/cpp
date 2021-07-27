@@ -20,7 +20,6 @@ class	DiamondTrap : public ScavTrap, public FragTrap
 		using FragTrap::_hitPoints;
 		using ScavTrap::_energyPoints;
 		using FragTrap::_attackDamage;
-		using ScavTrap::attack;
 
 	private:
 

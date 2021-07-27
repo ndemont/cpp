@@ -5,16 +5,21 @@
 
 int		main(void)
 {
-	//ScavTrap	sophie("Sophie");
-	//FragTrap	xavier("Xavier");
+	DiamondTrap	sophie("Sophie");
+	DiamondTrap	xavier("Xavier");
 	DiamondTrap	norminet("Norminet");
 	std::string	student = "student";
 
-	//sophie.attack(student);
-	//xavier.attack(student);
-	norminet.attack(student);
+	std::cout << std::endl;
+
+	sophie.attack(student);
+	xavier.takeDamage(67);
+	norminet.beRepaired(10000);
 	norminet.whoAmI();
-	//sophie.guardGate();
-	//xavier.highFivesGuys();
+	sophie.guardGate();
+	xavier.highFivesGuys();
+
+	std::cout << std::endl;
+
 	return 0;
 }

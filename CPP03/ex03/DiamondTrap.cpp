@@ -1,7 +1,6 @@
 #include "DiamondTrap.hpp"
 
-//CONSTRUCTORS
-
+//CONSTRUCTOR
 DiamondTrap::DiamondTrap(void)
 {
 	std::cout << "Default DiamondTrap constructor called" << std::endl;
