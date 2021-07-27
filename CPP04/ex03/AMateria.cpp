@@ -32,7 +32,6 @@ AMateria const & AMateria::operator=(AMateria const & rhs)
 }
 
 /* METHODS */
-
 std::string const &	AMateria::getType() const
 {
 	return _type;

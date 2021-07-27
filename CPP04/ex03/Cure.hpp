@@ -4,6 +4,7 @@
 # include <iostream>
 # include "AMateria.hpp"
 # include "Character.hpp"
+# include "ICharacter.hpp"
 
 class Cure : public AMateria
 {
