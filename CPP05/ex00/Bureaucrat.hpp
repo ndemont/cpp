@@ -40,9 +40,9 @@ class	Bureaucrat
 				};
     	};
 
-		std::string		getName(void) const;
-		int				getGrade(void) const;
-		void 			checkGrade(int grade);
+		std::string			getName(void) const;
+		int					getGrade(void) const;
+		void 				checkGrade(int grade);
 	
 	private:
 		std::string const	_name;

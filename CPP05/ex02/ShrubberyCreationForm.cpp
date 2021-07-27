@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 /* CONSTRUCTORS & DESTRUCTORS */
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const name) : Form(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : Form("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << "Default ShrubberyCreationForm constructor called" << std::endl;
 }
@@ -10,9 +10,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 }
 
-void	ShrubberyCreationForm::action(std::string target) const
+void	ShrubberyCreationForm::action(void) const
 {
-	std::ofstream	ofs(target + "_shrubbery");
+	std::ofstream	ofs(_target + "_shrubbery");
 	
 	ofs << "	               ,@@@@@@@," << std::endl;
 	ofs << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;

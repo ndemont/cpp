@@ -1,22 +1,5 @@
 #include "Bureaucrat.hpp"
 
-
-void	Bureaucrat::checkGrade(int grade)
-{
-	if (grade > 150)
-	{
-		_grade = 150;
-		throw Bureaucrat::GradeTooLowException();
-	}
-	else if (grade < 1)
-	{
-		_grade = 1;
-		throw Bureaucrat::GradeTooHighException();
-	}
-	else
-		_grade = grade;
-}
-
 /* CONSTRUCTORS & DESTRUCTORS */
 Bureaucrat::Bureaucrat(void) : _grade(150)
 {
@@ -96,7 +79,7 @@ std::ostream &	operator<<(std::ostream & o, Bureaucrat const & i)
 	return o;
 }
 
-/* GETTERS */
+/* GETTERS & SETTERS*/
 std::string		Bureaucrat::getName(void) const
 {
 	return _name;
@@ -107,13 +90,19 @@ int			Bureaucrat::getGrade(void) const
 	return _grade;
 }
 
-/* EXCEPTIONS */
-// virtual const char * what() const Bureaucrat::GradeTooHighException::throw()
-// {
-// 	return "The grade is too high";
-// }
-
-// virtual const char * what() const Bureaucrat::GradeTooLowException::throw()
-// {
-// 	return "The grade is too low");
-// }
+/* METHODS */
+void	Bureaucrat::checkGrade(int grade)
+{
+	if (grade > 150)
+	{
+		_grade = 150;
+		throw Bureaucrat::GradeTooLowException();
+	}
+	else if (grade < 1)
+	{
+		_grade = 1;
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else
+		_grade = grade;
+}

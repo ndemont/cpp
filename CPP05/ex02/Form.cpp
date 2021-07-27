@@ -81,7 +81,7 @@ void	Form::checkSignature(int grade, int gradeToSign)
 		throw Form::GradeTooLowException();
 }
 
-void	Form::beSigned(Bureaucrat bureaucrat)
+void	Form::beSigned(Bureaucrat const & bureaucrat)
 {
 	try
 	{
@@ -92,6 +92,29 @@ void	Form::beSigned(Bureaucrat bureaucrat)
        std::cerr << e.what() << std::endl;
 	}
 }
+
+void	Form::checkExecution(int grade, int gradeToExec) const
+{
+	if (grade <= gradeToExec)
+		action();
+	else
+		throw Form::GradeTooLowException();
+}
+
+void	Form::execute(Bureaucrat const & executor) const
+{
+	if (!_signed)
+		return ;
+	try
+	{
+		checkExecution(executor.getGrade(), _gradeToExec);
+	}
+	catch(const std::exception& e) 
+	{
+       std::cerr << "YOU DO NOT HAVE THE GRADE TO EXECUTE THIS" << std::endl;
+	}
+}
+
 
 std::ostream &	operator<<(std::ostream & o, Form const & i)
 {

@@ -10,11 +10,15 @@
 class	RobotomyRequestForm : virtual public Form
 {
 	public:
-		RobotomyRequestForm(std::string const name);
+		RobotomyRequestForm(std::string const target);
 		//RobotomyRequestForm(Form const & src);
 		~RobotomyRequestForm(void);
 
-		void	action(std::string target) const;
+	virtual	void	action(void) const;
+	
+	private:
+		std::string 	_target;
+
 };
 
 #endif

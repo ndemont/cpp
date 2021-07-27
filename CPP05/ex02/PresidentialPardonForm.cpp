@@ -1,7 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 
 /* CONSTRUCTORS & DESTRUCTORS */
-PresidentialPardonForm::PresidentialPardonForm(std::string const name) : Form(name, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string const target) : Form("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << "Default PresidentialPardonForm constructor called" << std::endl;
 }
@@ -10,7 +10,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 {
 }
 
-void	PresidentialPardonForm::action(std::string target) const
+void	PresidentialPardonForm::action(void) const
 {
-	std::cout << target << " has been forgiven by Zafod Beeblebrox" << std::endl;
+	std::cout << _target << " has been forgiven by Zafod Beeblebrox" << std::endl;
 }

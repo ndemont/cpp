@@ -13,11 +13,14 @@
 class	ShrubberyCreationForm : virtual public Form
 {
 	public:
-		ShrubberyCreationForm(std::string const name);
+		ShrubberyCreationForm(std::string const target);
 		//ShrubberyCreationForm(Form const & src);
 		~ShrubberyCreationForm(void);
 
-		void	action(std::string target) const;
+		virtual void	action(void) const;
+
+	private:
+		std::string 	_target;
 };
 
 #endif
