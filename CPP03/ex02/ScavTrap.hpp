@@ -12,6 +12,8 @@ class	ScavTrap : public ClapTrap
 		ScavTrap(ScavTrap const & src);
 		~ScavTrap(void);
 	
+		ScavTrap const & operator=(ScavTrap const & rhs);
+
 		void	guardGate(void);
 };
 

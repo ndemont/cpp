@@ -2,8 +2,11 @@
 
 //CONSTRUCTORS
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap("Default name")
 {
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 	std::cout << "Default FragTrap constructor called" << std::endl;
 }
 
@@ -24,6 +27,18 @@ FragTrap::FragTrap(FragTrap const & src)
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap destructor called" << std::endl;
+}
+
+FragTrap const & FragTrap::operator=(FragTrap const & rhs)
+{
+	if (this != &rhs)
+	{
+		_name = rhs.getName();
+		_hitPoints = rhs.getHitPoints();
+		_energyPoints = rhs.getEnergyPoints();
+		_attackDamage = rhs.getDamage();
+	}
+	return *this;
 }
 
 void	FragTrap::highFivesGuys(void)
