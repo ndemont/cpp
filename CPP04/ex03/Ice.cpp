@@ -3,7 +3,7 @@
 /* CONSTRUCTORS & DESTRUCTORS */
 Ice::Ice(void)
 {
-	_type = "Ice";
+	_type = "ice";
 	std::cout << "Default Ice constructor called" << std::endl;
 }
 

@@ -12,7 +12,7 @@ Character::Character(std::string name) : _name(name)
 {
 	for (int i = 0; i < 4; i++)
 		_inventory[i] = NULL;
-	std::cout << "Default Character constructor called" << std::endl;
+	std::cout << "Default Character constructor called named: " << getName() << std::endl;
 }
 
 Character::Character(Character const & src)
@@ -53,6 +53,7 @@ void				Character::equip(AMateria* m)
 		{
 			if (!_inventory[i])
 				break ;
+			i++;
 		}
 		_inventory[i] = m;
 	}

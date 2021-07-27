@@ -21,8 +21,25 @@ MateriaSource::~MateriaSource(void)
 	std::cout << "Materia Source destructor called" << std::endl;
 }
 
+/* OPERATORS */
+MateriaSource const &	MateriaSource::operator=(MateriaSource const & rhs)
+{
+	std::cout << "Materia assignation operator called" << std::endl;
+	if (this != &rhs)
+	{
+		for (int i = 0; i < 4; i++)
+			_inventory[i] = rhs.getMateria(i);
+	}
+	return *this;
+}
+
 /* METHODS */
-void		MateriaSource::learnMateria(AMateria* m)
+AMateria		*MateriaSource::getMateria(int idx) const
+{
+	return _inventory[idx];
+}
+
+void	MateriaSource::learnMateria(AMateria* const m)
 {
 	int i = 0;
 
@@ -30,13 +47,14 @@ void		MateriaSource::learnMateria(AMateria* m)
 		std::cout << "Inventory of Materias is full" << std::endl;
 	else
 	{
+		std::cout << "Learning new Materia of type: " << m->getType() << std::endl;
 		while (i < 4)
 		{
 			if (!_inventory[i])
 				break ;
 			i++;
 		}
-		*_inventory[i] = *m;
+		_inventory[i] = m;
 	}
 }
 
