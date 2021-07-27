@@ -38,17 +38,17 @@ std::string	ClapTrap::getName(void) const
 	return _name;
 }
 
-int			 ClapTrap::getHitPoints(void) const
+int		ClapTrap::getHitPoints(void) const
 {
 	return _hitPoints;
 }
 
-int			 ClapTrap::getEnergyPoints(void) const
+int		ClapTrap::getEnergyPoints(void) const
 {
 	return _energyPoints;
 }
 
-int			 ClapTrap::getDamage(void) const
+int		ClapTrap::getDamage(void) const
 {
 	return _attackDamage;
 }
