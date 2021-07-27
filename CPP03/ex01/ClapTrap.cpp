@@ -21,9 +21,31 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
+ClapTrap const & ClapTrap::operator=(ClapTrap const & rhs)
+{
+	if (this != &rhs)
+	{
+		_name = rhs.getName();
+		_hitPoints = rhs.getHitPoints();
+		_energyPoints = rhs.getEnergyPoints();
+		_attackDamage = rhs.getDamage();
+	}
+	return *this;
+}
+
 std::string	ClapTrap::getName(void) const
 {
 	return _name;
+}
+
+int		ClapTrap::getHitPoints(void) const
+{
+	return _hitPoints;
+}
+
+int		ClapTrap::getEnergyPoints(void) const
+{
+	return _energyPoints;
 }
 
 int			 ClapTrap::getDamage(void) const
