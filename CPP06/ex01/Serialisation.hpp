@@ -1,3 +1,4 @@
+
 #ifndef SERIALIZATION_HPP
 # define SERIALIZATION_HPP
 
