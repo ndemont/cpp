@@ -31,6 +31,5 @@ int		main(void)
 	std::cout << "The " << *i2 << " makes a sound: ";
 	i2->makeSound();
 
-
 	return 0;
 }

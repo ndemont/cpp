@@ -6,11 +6,6 @@ WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
 	std::cout << "Default WrongAnimal constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type) : _type(type)
-{
-	std::cout << "WrongAnimal constructor called with type: " << getType() << std::endl;
-}
-
 WrongAnimal::WrongAnimal(WrongAnimal const & src)
 {
 	std::cout << "Copy WrongAnimal constructor called" << std::endl;
@@ -28,7 +23,7 @@ WrongAnimal &	WrongAnimal::operator=(WrongAnimal const & rhs)
 	std::cout << "Assignation operator called" << std::endl;
 
 	if (this != &rhs)
-		_type = rhs.getType();
+		_type = rhs._type;
 	return *this;
 }
 
@@ -39,7 +34,7 @@ std::string	WrongAnimal::getType(void) const
 
 void		WrongAnimal::makeSound(void) const 
 {
-	std::cout << "*Weird animal sound resonating in the wind*" << std::endl;
+	std::cout << "* Weird animal sound resonating in the wind *" << std::endl;
 }
 
 

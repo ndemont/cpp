@@ -14,14 +14,10 @@ class Dog : public Animal
 
 		Dog &	operator=(Dog const & rhs);
 
-		std::string	getType(void) const;
 		void		makeSound(void) const;
-
-	protected:
-		std::string	type;
-
+		
 	private:
-		Brain		*_brain;
+		Brain			*_brain;
 };
 
 #endif

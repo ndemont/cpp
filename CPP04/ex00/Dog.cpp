@@ -1,7 +1,8 @@
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void)
 {
+	_type = "Dog";
 	std::cout << "Default Dog constructor called" << std::endl;
 }
 
@@ -14,13 +15,6 @@ Dog::Dog(Dog const & src)
 Dog::~Dog(void)
 {
 	std::cout << "Dog destructor called" << std::endl;
-}
-
-Dog &	Dog::operator=(Dog const & rhs)
-{
-	if (this != &rhs)
-		_type = rhs.getType();
-	return *this;
 }
 
 void		Dog::makeSound(void) const

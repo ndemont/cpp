@@ -20,8 +20,6 @@ Brain::~Brain(void)
 /* OPERATORS */
 Brain & Brain::operator=(Brain const & rhs)
 {
-	std::cout << "Brain assignation operator called" << std::endl;
-
 	if (this != &rhs)
 	{
 		for (int i = 0; i < 100; i++)

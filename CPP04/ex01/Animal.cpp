@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 /* CONSTRUCTORS */
-Animal::Animal(void) : type("Generic Animal")
+Animal::Animal(void) : _type("Animal")
 {
 	std::cout << "Default Animal constructor called" << std::endl;
 }
@@ -17,22 +17,28 @@ Animal::~Animal(void)
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-/* OPERATORS */
 Animal &	Animal::operator=(Animal const & rhs)
 {
-	std::cout << "Animal assignation operator called" << std::endl;
+	std::cout << "Assignation operator called" << std::endl;
 
 	if (this != &rhs)
-		type = rhs.type;
+		_type = rhs.getType();
 	return *this;
 }
 
 std::string	Animal::getType(void) const
 {
-	return type;
+	return _type;
 }
 
 void		Animal::makeSound(void) const 
 {
-	std::cout << "*Weird animal sound resonating in the wind*" << std::endl;
+	std::cout << "* Weird animal sound resonating in the wind *" << std::endl;
+}
+
+
+std::ostream &	operator<<(std::ostream & o, Animal const & i)
+{
+	o << i.getType();
+	return o;
 }

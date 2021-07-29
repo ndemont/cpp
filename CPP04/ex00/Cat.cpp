@@ -1,7 +1,8 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat")
+Cat::Cat(void)
 {
+	_type = "Cat";
 	std::cout << "Default Cat constructor called" << std::endl;
 }
 
@@ -14,13 +15,6 @@ Cat::Cat(Cat const & src)
 Cat::~Cat(void)
 {
 	std::cout << "Cat destructor called" << std::endl;
-}
-
-Cat &	Cat::operator=(Cat const & rhs)
-{
-	if (this != &rhs)
-		_type = rhs.getType();
-	return *this;
 }
 
 void		Cat::makeSound(void) const
