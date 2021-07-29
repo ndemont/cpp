@@ -1,6 +1,6 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void) : type("WrongCat")
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	std::cout << "Default Wrong Cat constructor called" << std::endl;
 }
@@ -19,23 +19,11 @@ WrongCat::~WrongCat(void)
 WrongCat &	WrongCat::operator=(WrongCat const & rhs)
 {
 	if (this != &rhs)
-		type = rhs.type;
+		_type = rhs.getType();
 	return *this;
-}
-
-std::string	WrongCat::getType(void) const
-{
-	return type;
 }
 
 void		WrongCat::makeSound(void) const
 {
 	std::cout << "Miaaaaaouuuuuuuuuuu!" << std::endl;
-}
-
-
-std::ostream &	operator<<(std::ostream & o, WrongCat const & i)
-{
-	(void) i;
-	return o;
 }

@@ -13,15 +13,8 @@ class WrongCat : public WrongAnimal
 
 		WrongCat &	operator=(WrongCat const & rhs);
 
-		std::string	getType(void) const;
 		void		makeSound(void) const;
-
-	protected:
-		std::string	type;
-
 	private:
 };
-
-std::ostream &		operator<<(std::ostream & o, WrongCat const & i);
 
 #endif
