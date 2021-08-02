@@ -16,15 +16,16 @@ class	Bureaucrat
 		Bureaucrat(Bureaucrat const & src);
 		~Bureaucrat(void);
 
+		Bureaucrat const &	operator=(Bureaucrat const & rhs);
 		Bureaucrat &		operator++(void);
 		Bureaucrat			operator++(int);
 		Bureaucrat &		operator--(void);
 		Bureaucrat			operator--(int);
 
-		std::string		getName(void) const;
-		int				getGrade(void) const;
-		void 			checkGrade(int grade);
-		void			signForm(Form & form);
+		std::string	const	getName(void) const;
+		int					getGrade(void) const;
+		void 				checkGrade(int grade);
+		void				signForm(Form & form);
 
 		class GradeTooHighException : public std::exception
     	{

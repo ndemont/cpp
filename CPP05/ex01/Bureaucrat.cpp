@@ -1,30 +1,13 @@
 #include "Bureaucrat.hpp"
 
-void	Bureaucrat::checkGrade(int grade)
+Bureaucrat::Bureaucrat(void) : _name("unknown"), _grade(150)
 {
-	if (grade > 150)
-	{
-		_grade = 150;
-		throw Bureaucrat::GradeTooLowException();
-	}
-	else if (grade < 1)
-	{
-		_grade = 1;
-		throw Bureaucrat::GradeTooHighException();
-	}
-	else
-		_grade = grade;
-}
-
-/* CONSTRUCTORS & DESTRUCTORS */
-Bureaucrat::Bureaucrat(void) : _grade(150)
-{
-	std::cout << "Default Bureaucrat constructor called: Unknown" << std::endl;
+	std::cout << "Default Bureaucrat constructor called: " << _name << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {
-	std::cout << "Default Bureaucrat constructor called: " << getName() << std::endl;
+	std::cout << "Default Bureaucrat constructor called: " << _name << std::endl;
 	try
 	{
 		checkGrade(grade);
@@ -37,15 +20,13 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src.getName()), _grade(src.getGrade()) 
 {
-	std::cout << "Copy Bureaucrat constructor called" << std::endl;
+	std::cout << "Copy Bureaucrat constructor called: " << _name <<  std::endl;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destructor called: " << _name << std::endl;
 }
-
-/* OPERATORS */
 
 Bureaucrat &	Bureaucrat::operator++(void)
 {
@@ -95,7 +76,6 @@ std::ostream &	operator<<(std::ostream & o, Bureaucrat const & i)
 	return o;
 }
 
-/* GETTERS */
 std::string		Bureaucrat::getName(void) const
 {
 	return _name;
@@ -113,4 +93,20 @@ void	Bureaucrat::signForm(Form & form)
 		std::cout << getName() << " signs " << form.getName() <<std::endl;
 	else
 		std::cout << getName() << " cannot sign because his grade is to low" <<std::endl;
+}
+
+void	Bureaucrat::checkGrade(int grade)
+{
+	if (grade > 150)
+	{
+		_grade = 150;
+		throw Bureaucrat::GradeTooLowException();
+	}
+	else if (grade < 1)
+	{
+		_grade = 1;
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else
+		_grade = grade;
 }
