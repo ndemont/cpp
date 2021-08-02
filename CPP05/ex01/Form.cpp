@@ -1,12 +1,5 @@
 #include "Form.hpp"
 
-/* CONSTRUCTORS & DESTRUCTORS */
-
-Form::Form(void) : _name("Default Name"), _signed(false), _gradeToSign(1), _gradeToExec(1)
-{
-	std::cout << "Default Form constructor called: " << getName() << std::endl;
-}
-
 Form::Form(std::string const name, int const gradeToSign, int const gradeToExec) : _name(name), _signed(false), _gradeToSign(getGrade(gradeToSign)), _gradeToExec(getGrade(gradeToExec))
 {
 	std::cout << "Default Form constructor called: " << getName() << std::endl;
@@ -37,7 +30,13 @@ Form::~Form(void)
 {
 	std::cout << "Form destructor called" << std::endl;
 }
-/* GETTERS & SETTERS */
+
+Form const &	Form::operator=(Form const & rhs)
+{
+	_signed = rhs.getSignedStatus();
+	return *this;
+}
+
 std::string	Form::getName(void) const
 {
 	return _name;
@@ -57,8 +56,6 @@ int	Form::getGradeToExec(void) const
 {
 	return _gradeToExec;
 }
-
-/* METHODS */
 
 int		 Form::getGrade(int const grade)
 {
