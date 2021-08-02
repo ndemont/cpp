@@ -14,7 +14,7 @@ class	Form
 		Form(void);
 		Form(std::string const name, int const gradeToSign, int const gradeToExec);
 		Form(Form const & src);
-		~Form(void);
+		virtual ~Form(void);
 
 		std::string		getName(void) const;
 		bool			getSignedStatus(void) const;
