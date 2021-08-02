@@ -8,8 +8,20 @@ Intern::Intern(void)
 	formClasses[0] = &Intern::_robotomy;
 	formClasses[1] = &Intern::_presidential;
 	formClasses[2] = &Intern::_shrubbery;
-	std::cout << "Default Intern constructor called: Unknown" << std::endl;
+	std::cout << "Default Intern constructor called" << std::endl;
 }
+
+Intern::Intern(Intern const & src)
+{
+	formNames[0] = "robotomy request";
+	formNames[1] = "presidential pardon";
+	formNames[2] = "shrubbery creation";
+	formClasses[0] = &Intern::_robotomy;
+	formClasses[1] = &Intern::_presidential;
+	formClasses[2] = &Intern::_shrubbery;
+	std::cout << "Copy Intern constructor called" << std::endl;
+}
+
 
 Intern::~Intern(void)
 {
