@@ -13,6 +13,7 @@ Intern::Intern(void)
 
 Intern::Intern(Intern const & src)
 {
+	(void)src;
 	formNames[0] = "robotomy request";
 	formNames[1] = "presidential pardon";
 	formNames[2] = "shrubbery creation";
@@ -22,10 +23,15 @@ Intern::Intern(Intern const & src)
 	std::cout << "Copy Intern constructor called" << std::endl;
 }
 
-
 Intern::~Intern(void)
 {
 	std::cout << "Intern destructor created" << std::endl;
+}
+
+Intern const & Intern::operator=(Intern const & rhs)
+{
+	(void)rhs;
+	return *this;
 }
 
 Form	*Intern::checkFormName(std::string formName, std::string target)

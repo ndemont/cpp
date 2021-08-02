@@ -23,11 +23,11 @@ class	Intern
 		Form			*makeForm(std::string name, std::string target);
 
 		class FormNotFound : public std::exception
-    	{
-        	public:
-            	FormNotFound(void) {};
-            	virtual ~FormNotFound(void) throw() {};
-            	virtual const char* what() const throw()
+		{
+			public:
+				FormNotFound(void) {};
+				virtual ~FormNotFound(void) throw() {};
+				virtual const char* what() const throw()
 				{
 					return "This form does not exist";
 				};
