@@ -23,9 +23,6 @@ class AMateria
 
 	protected:
 		std::string		_type;
-	
-	private:
-
 };
 
 #endif

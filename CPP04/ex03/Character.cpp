@@ -26,16 +26,22 @@ Character::~Character(void)
 	std::cout << "Character detructor called" << std::endl;
 }
 
-/* OPERATORS */
 Character const & Character::operator=(Character const & rhs)
 {
 	std::cout << "Character assignation operator called" << std::endl;
 	if (this != &rhs)
 		_name = rhs.getName();
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i])
+		{
+			delete _inventory[i];
+			_inventory[i] = rhs._inventory[i]->clone();
+		}
+	}
 	return *this;
 }
 
-/* METHODS */
 std::string const &	Character::getName(void) const
 {
 	return _name;
@@ -61,11 +67,14 @@ void				Character::equip(AMateria* m)
 
 void				Character::unequip(int idx)
 {
-	_inventory[idx] = NULL;
+	if (idx >= 0 && idx <= 3)
+		_inventory[idx] = NULL;
+	else
+		std::cout << "Index " << idx << " is not valid" << std::endl;
 }
 
 void 				Character::use(int idx, ICharacter& target)
 {
-	if (_inventory[idx])
+	if ((idx >= 0 && idx <= 3) && _inventory[idx])
 		_inventory[idx]->use(target);
 }

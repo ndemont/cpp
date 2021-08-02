@@ -18,10 +18,14 @@ MateriaSource::MateriaSource(MateriaSource const & src)
 
 MateriaSource::~MateriaSource(void)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i])
+			delete _inventory[i];
+	}
 	std::cout << "Materia Source destructor called" << std::endl;
 }
 
-/* OPERATORS */
 MateriaSource const &	MateriaSource::operator=(MateriaSource const & rhs)
 {
 	std::cout << "Materia assignation operator called" << std::endl;
