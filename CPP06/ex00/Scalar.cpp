@@ -2,15 +2,24 @@
 
 bool	isNumeric(char c);
 
-Scalar::Scalar(void) : _c(0), _i(0), _f(0), _d(0), _impossible(false), _nonDisplayable(false)
+Scalar::Scalar(void) : _c(0), _i(0), _f(0), _d(0)
 {
+	_precision = "";
+	_charError = "Non displayable";
+	_floatError = "";
+	_doubleError = "";
 	std::cout << "Default Scalar constructor called" << std::endl;
 }
 
-Scalar::Scalar(std::string input) : _c(0), _i(0), _f(0), _d(0), _impossible(false), _nonDisplayable(false)
+Scalar::Scalar(std::string input) : _c(0), _i(0), _f(0), _d(0)
 {
+	_precision = "";
+	_charError = "Non displayable";
+	_intError = "";
+	_floatError = "";
+	_doubleError = "";
 	findType(input);
-	std::cout << "Default Scalar constructor called" << std::endl;
+	std::cout << "Scalar constructor called with input: '" << input << "'" << std::endl;
 }
 
 Scalar::Scalar(Scalar const & src)
@@ -32,6 +41,11 @@ Scalar const &	Scalar::operator=(Scalar const & rhs)
 		_i = rhs.getInt();
 		_f = rhs.getFloat();
 		_d = rhs.getDouble();
+		_precision = rhs.getPrecision();
+		_charError = rhs.getCharError();
+		_intError = rhs.getIntError();
+		_floatError = rhs.getFloatError();
+		_doubleError = rhs.getDoubleError();
 	}
 	return *this;
 }
@@ -39,47 +53,14 @@ Scalar const &	Scalar::operator=(Scalar const & rhs)
 void	Scalar::findType(std::string input)
 {
 	if (isChar(input))
-		setFromChar(input);
+		setFromChar();
 	else if (isInt(input))
-		setFromInt(input);
+		setFromInt();
 	else if (isFloat(input))
-		setFromFloat(input);
+		setFromFloat();
 	else if (isDouble(input))
-		setFromDouble(input);
-	else
-		std::cout << "Invalid Argument: your input can not be converted." << std::endl;
-}
-
-void	Scalar::setFromChar(std::string input)
-{
-	_c	= input[0];
-	_i	= static_cast<int>(_c - 48);
-	_f	= static_cast<float>(_c - 48);
-	_d	= static_cast<double>(_c - 48);
-}
-
-void	Scalar::setFromInt(std::string input)
-{
-	_i = std::stoi(input);
-	_f = static_cast<float>(_i);
-	_d	= static_cast<double>(_i);
-	_c	= static_cast<char>(_i);
-}
-		
-void	Scalar::setFromFloat(std::string input)
-{
-	_f = std::stof(input);
-	_d	= static_cast<double>(_f);
-	_i	= static_cast<int>(_f);	
-	_c	= static_cast<char>(_f);
-}
-
-void	Scalar::setFromDouble(std::string input)
-{
-	_d = std::stod(input);
-	_f	= static_cast<float>(_d);
-	_i	= static_cast<int>(_d);	
-	_c	= static_cast<char>(_i);
+		setFromDouble();
+	setPrecision();
 }
 
 char	Scalar::getChar(void) const
@@ -102,40 +83,153 @@ double	Scalar::getDouble(void) const
 	return _d;
 }
 
-bool	Scalar::getImpossible(void) const
+std::string	Scalar::getPrecision(void) const
 {
-	return _impossible;
+	return _precision;
 }
 
-bool	Scalar::getNonDisplayable(void) const
+std::string	Scalar::getCharError(void) const
 {
-	return _nonDisplayable;
+	return _charError;
+}
+
+std::string	Scalar::getIntError(void) const
+{
+	return _intError;
+}
+
+std::string	Scalar::getFloatError(void) const
+{
+	return _floatError;
+}
+
+std::string	Scalar::getDoubleError(void) const
+{
+	return _doubleError;
+}
+
+void	Scalar::setFromChar(void)
+{
+	_i	= static_cast<int>(_c - 48);
+	_f	= static_cast<float>(_c - 48);
+	_d	= static_cast<double>(_c - 48);
+}
+
+void	Scalar::setFromInt(void)
+{
+	_f = static_cast<float>(_i);
+	_d	= static_cast<double>(_i);
+	if (_i >= 32 && _i <= 126)
+	{
+		_charError = "";
+		_c	= static_cast<char>(_i);
+	}
+	else if (_i < 0 || _i > 127)
+		_charError = "impossible";
+}
+		
+void	Scalar::setFromFloat(void)
+{
+	_d	= static_cast<double>(_f);
+	_i	= static_cast<int>(_f);	
+	_c	= static_cast<char>(_f);
+	if (_f >= 32.0 && _f <= 126.0)
+	{
+		_charError = "";
+		_c	= static_cast<char>(_i);
+	}
+	else if (_f < 0.0 || _f > 127.0)
+		_charError = "impossible";
+}
+
+void	Scalar::setFromDouble(void)
+{
+	_f	= static_cast<float>(_d);
+	_i	= static_cast<int>(_d);	
+	if (_d >= 32 && _d <= 126)
+	{
+		_charError = "";
+		_c	= static_cast<char>(_i);
+	}
+	else if (_d < 0.0 || _d > 127.0)
+		_charError = "impossible";
+}
+
+void	Scalar::setPrecision(void)
+{
+	double modulo = modf(_f, &modulo);
+	if (!modulo && _f != INFINITY && _f != -INFINITY)
+		_precision = ".0";
+}
+
+bool	Scalar::isChar(std::string str)
+{
+	if (isNumeric(str[0]) || str[1])
+		return false;
+	_charError = "";
+	_c	= str[0];
+	return true;
+}
+
+bool	Scalar::isInt(std::string str)
+{
+	try {
+		_i = std::stoi(str);
+	} catch(const std::exception& e) {
+		_intError = "impossible";
+		return false;
+	}
+	return true;
+}
+
+bool	Scalar::isFloat(std::string str)
+{
+	try {
+		_f = std::stof(str);
+	} catch(const std::exception& e) {
+		_floatError = "impossible";
+		return false;
+	}
+	return true;
+
+}
+
+bool	Scalar::isDouble(std::string str)
+{
+	try {
+		_d = std::stod(str);
+	} catch(const std::exception& e) {
+		_doubleError = "impossible";
+		return false;
+	}
+	float	mod = modf(_d, &mod);
+	if (mod)
+		_precision = ".0";
+	return true;
 }
 
 std::ostream &	operator<<(std::ostream & o, Scalar const & i)
 {
-	if (i.getImpossible())
-	{
-		o << "char:   " << "impossbile" << std::endl;
-		o << "int:    " << "impossbile" << std::endl;
-	}
-	else if (i.getNonDisplayable())
-	{
-		o << "char:   " << "Non displayable" << std::endl;
-		o << "int:    " << i.getInt() << std::endl;
-	}
+	o << "char:   ";
+	if (i.getCharError() != "")
+		o << i.getCharError() << std::endl;
 	else
-	{
-		o << "char:   '" << i.getChar() << "'" << std::endl;
-		o << "int:    " << i.getInt() << std::endl;
-	}
-	o << "float:  " << i.getFloat();
-	if (!(i.getFloat() - static_cast<int>(i.getFloat())))
-		o << ".0";
-	o << "f" << std::endl;
-	o << "double: " << i.getDouble();
-	if (!(i.getDouble() - static_cast<int>(i.getDouble())))
-		o << ".0";
+		o << "'" << i.getChar() << "'" << std::endl;
+	o << "int:    ";
+	if (i.getIntError() != "")
+		o << i.getIntError() << std::endl;
+	else
+		o << i.getInt() << std::endl;
+	o << "float:  ";
+	if (i.getFloatError() != "")
+		o << i.getFloatError() << std::endl;
+	else
+		o << i.getFloat() << i.getPrecision() << "f" << std::endl;
+	o << "double: ";
+	if (i.getDoubleError() != "")
+		o << i.getDoubleError() << std::endl;
+	else
+		o << i.getDouble() << i.getPrecision() << std::endl;
 	o << std::endl;
 	return o;
 }
@@ -146,92 +240,4 @@ bool	isNumeric(char c)
 		return  false;
 	else
 		return true;
-}
-
-bool	Scalar::isChar(std::string str)
-{
-	if (!str[0])
-		return false;
-	else if (str[1])
-		return false;
-	else if (str[0] < 20 || str[0] > 126 || isNumeric(str[0]))
-	{
-		_nonDisplayable = true;
-		return false;
-	}
-	else
-		return true;
-}
-
-bool	Scalar::isInt(std::string str)
-{
-	int i = 0;
-
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!isNumeric(str[i]))
-			return false;
-		i++;
-	}
-	return true;
-}
-
-bool	Scalar::isFloat(std::string str)
-{
-	int i 		= 0;
-	int point 	= 0;
-	int f 		= 0;
-
-	if (str == "-inff" || str == "inff" || str == "nanf")
-	{
-		_impossible = true;
-		return true;
-	}
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!isNumeric(str[i]))
-		{
-			if (!point && str[i] == '.' && i)
-				point++;
-			else if (!f && str[i] == 'f')
-				f++;
-			else 
-				return false;
-		}
-		i++;
-	}
-	if (str[i - 1] != 'f')
-		return false;
-	else
-		return true;
-}
-
-bool	Scalar::isDouble(std::string str)
-{
-	int i 		= 0;
-	int point 	= 0;
-
-	if (str == "-inf" || str == "inf" || str == "nan")
-	{
-		_impossible = true;
-		return true;
-	}
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (!isNumeric(str[i]))
-		{
-			if (!point && str[i] == '.' && i)
-				point++;
-			else 
-				return false;
-		}
-		i++;
-	}
-	return true;
 }
