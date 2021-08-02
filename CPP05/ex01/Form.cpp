@@ -2,6 +2,11 @@
 
 /* CONSTRUCTORS & DESTRUCTORS */
 
+Form::Form(void) : _name("Default Name"), _signed(false), _gradeToSign(1), _gradeToExec(1)
+{
+	std::cout << "Default Form constructor called: " << getName() << std::endl;
+}
+
 Form::Form(std::string const name, int const gradeToSign, int const gradeToExec) : _name(name), _signed(false), _gradeToSign(getGrade(gradeToSign)), _gradeToExec(getGrade(gradeToExec))
 {
 	std::cout << "Default Form constructor called: " << getName() << std::endl;

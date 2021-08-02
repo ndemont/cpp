@@ -11,6 +11,7 @@ class Bureaucrat;
 class	Form
 {
 	public:
+		Form(void);
 		Form(std::string const name, int const gradeToSign, int const gradeToExec);
 		Form(Form const & src);
 		~Form(void);
