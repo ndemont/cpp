@@ -35,7 +35,7 @@ Bureaucrat &	Bureaucrat::operator++(void)
 {
 	try
 	{
-		checkGrade(getGrade() - 1);
+		checkGrade(_grade - 1);
 	}
 	catch(const std::exception& e) 
 	{
@@ -56,7 +56,7 @@ Bureaucrat &	Bureaucrat::operator--(void)
 {
 	try
 	{
-		checkGrade(getGrade() + 1);
+		checkGrade(_grade + 1);
 	}
 	catch(const std::exception& e) 
 	{
