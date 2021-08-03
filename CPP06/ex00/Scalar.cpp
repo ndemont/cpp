@@ -186,10 +186,7 @@ bool	Scalar::isInt(std::string str)
 	while (isNumeric(str[i]))
 		i++;
 	if (str[i])
-	{
-		_intError = "impossible";
 		return false;
-	}
 	return true;
 }
 
