@@ -17,7 +17,7 @@ int		main(void)
 	std::cout << std::endl;
 	data2 = deserialize(i);
 	f2 = reinterpret_cast<float *>(data2->ptr);
-	std::cout << "Final adress of parameter: " << data2 << std::endl;
-	std::cout << "Final value of content:    " << *f2 << std::endl;
+	std::cout << "Final adress of parameter:   " << data2 << std::endl;
+	std::cout << "Final value of content:      " << *f2 << std::endl;
 	return 0;
 }
