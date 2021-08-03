@@ -12,7 +12,6 @@ class Cat : public AAnimal
 		Cat(Cat const & src);
 		~Cat(void);
 
-		virtual	Cat &		operator=(Cat const & rhs);
 		virtual void		makeSound(void) const;
 
 	private:

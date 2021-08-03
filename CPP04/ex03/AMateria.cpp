@@ -1,6 +1,5 @@
 #include "AMateria.hpp"
 
-/* CONSTRUCTORS & DESTRUCTORS */
 AMateria::AMateria(void) : _type("Generic Materia")
 {
 	std::cout << "Default Materia constructor called" << std::endl;
@@ -8,7 +7,7 @@ AMateria::AMateria(void) : _type("Generic Materia")
 
 AMateria::AMateria(std::string const & type) : _type(type)
 {
-	std::cout << "Default Materia constructor called" << std::endl;
+	std::cout << "Materia constructor called with type: " << _type << std::endl;
 }
 
 AMateria::AMateria(AMateria const & src)
@@ -22,7 +21,6 @@ AMateria::~AMateria(void)
 	std::cout << "Materia destructor called" << std::endl;
 }
 
-/* OPERATORS */
 AMateria const & AMateria::operator=(AMateria const & rhs)
 {
 	std::cout << "Materia assignation operator called" << std::endl;
@@ -31,7 +29,6 @@ AMateria const & AMateria::operator=(AMateria const & rhs)
 	return *this;
 }
 
-/* METHODS */
 std::string const &	AMateria::getType() const
 {
 	return _type;

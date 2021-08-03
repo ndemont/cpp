@@ -1,6 +1,10 @@
 #include "Form.hpp"
 
 /* CONSTRUCTORS & DESTRUCTORS */
+Form::Form(void) : _name("Default Name"), _signed(false), _gradeToSign(1), _gradeToExec(1)
+{
+	std::cout << "Default Form constructor called: " << getName() << std::endl;
+}
 
 Form::Form(std::string const name, int const gradeToSign, int const gradeToExec) : _name(name), _signed(false), _gradeToSign(getGrade(gradeToSign)), _gradeToExec(getGrade(gradeToExec))
 {
@@ -93,27 +97,27 @@ void	Form::beSigned(Bureaucrat const & bureaucrat)
 	}
 }
 
-void	Form::checkExecution(int grade, int gradeToExec) const
+void	Form::checkExecution(int grade, int gradeToExec, Bureaucrat const & executor) const
 {
 	if (grade <= gradeToExec)
-		action();
+		execute(executor);
 	else
 		throw Form::GradeTooLowException();
 }
 
-void	Form::execute(Bureaucrat const & executor) const
-{
-	if (!_signed)
-		return ;
-	try
-	{
-		checkExecution(executor.getGrade(), _gradeToExec);
-	}
-	catch(const std::exception& e) 
-	{
-       std::cerr << "YOU DO NOT HAVE THE GRADE TO EXECUTE THIS" << std::endl;
-	}
-}
+//void	Form::execute(Bureaucrat const & executor) const
+//{
+//	if (!_signed)
+//		return ;
+//	try
+//	{
+//		checkExecution(executor.getGrade(), _gradeToExec, executor);
+//	}
+//	catch(const std::exception& e) 
+//	{
+//       std::cerr << "YOU DO NOT HAVE THE GRADE TO EXECUTE THIS" << std::endl;
+//	}
+//}
 
 
 std::ostream &	operator<<(std::ostream & o, Form const & i)

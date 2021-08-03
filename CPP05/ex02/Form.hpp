@@ -11,9 +11,10 @@ class Bureaucrat;
 class	Form
 {
 	public:
+		Form(void);
 		Form(std::string const name, int const gradeToSign, int const gradeToExec);
 		Form(Form const & src);
-		~Form(void);
+		virtual ~Form(void);
 
 		std::string		getName(void) const;
 		bool			getSignedStatus(void) const;
@@ -21,12 +22,11 @@ class	Form
 		int				getGradeToExec(void) const;
 		void 			checkGrade(int grade);
 		void 			checkSignature(int grade, int gradeToSign);
-		void 			checkExecution(int grade, int gradeToExec) const;
+		void 			checkExecution(int grade, int gradeToExec, Bureaucrat const & executor) const;
 		int				getGrade(int const grade);
 
 		void			beSigned(Bureaucrat const & bureaucrat);
-		void			execute(Bureaucrat const & executor) const;
-		virtual void	action(void) const = 0;
+		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 
 		class GradeTooHighException : public std::exception

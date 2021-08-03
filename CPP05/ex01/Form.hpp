@@ -15,6 +15,8 @@ class	Form
 		Form(Form const & src);
 		~Form(void);
 
+		Form const &	operator=(Form const & rhs);
+
 		std::string		getName(void) const;
 		bool			getSignedStatus(void) const;
 		int				getGradeToSign(void) const;
@@ -22,7 +24,6 @@ class	Form
 		void 			checkGrade(int grade);
 		void 			checkSignature(int grade, int gradeToSign);
 		int				getGrade(int const grade);
-
 		void			beSigned(Bureaucrat bureaucrat);
 
 		class GradeTooHighException : public std::exception

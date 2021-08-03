@@ -10,7 +10,10 @@ class	Intern
 {
 	public:
 		Intern(void);
+		Intern(Intern const & src);
 		~Intern(void);
+
+		Intern const & operator=(Intern const & src);
 
 		Form			*checkFormName(std::string formName, std::string target);
 		typedef Form*	(Intern::*ptr)(std::string target);
@@ -20,11 +23,11 @@ class	Intern
 		Form			*makeForm(std::string name, std::string target);
 
 		class FormNotFound : public std::exception
-    	{
-        	public:
-            	FormNotFound(void) {};
-            	virtual ~FormNotFound(void) throw() {};
-            	virtual const char* what() const throw()
+		{
+			public:
+				FormNotFound(void) {};
+				virtual ~FormNotFound(void) throw() {};
+				virtual const char* what() const throw()
 				{
 					return "This form does not exist";
 				};

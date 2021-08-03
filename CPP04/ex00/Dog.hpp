@@ -11,17 +11,7 @@ class Dog : public Animal
 		Dog(Dog const & src);
 		~Dog(void);
 
-		Dog &	operator=(Dog const & rhs);
-
-		std::string	getType(void) const;
 		void		makeSound(void) const;
-
-	protected:
-		std::string	type;
-
-	private:
 };
-
-std::ostream &		operator<<(std::ostream & o, Dog const & i);
 
 #endif

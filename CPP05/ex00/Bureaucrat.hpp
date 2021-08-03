@@ -13,34 +13,35 @@ class	Bureaucrat
 		Bureaucrat(Bureaucrat const & src);
 		~Bureaucrat(void);
 
-		Bureaucrat &		operator++(void);
+		Bureaucrat const &	operator=(Bureaucrat const & rhs);
+;		Bureaucrat &		operator++(void);
 		Bureaucrat			operator++(int);
 		Bureaucrat &		operator--(void);
 		Bureaucrat			operator--(int);
 
 		class GradeTooHighException : public std::exception
-    	{
-        	public:
-            	GradeTooHighException(void) {};
-            	virtual ~GradeTooHighException(void) throw() {};
-            	virtual const char* what() const throw()
+		{
+			public:
+				GradeTooHighException(void) {};
+				virtual ~GradeTooHighException(void) throw() {};
+				virtual const char* what() const throw()
 				{
 					return "This grade is too high, it will be set at 1";
 				};
-    	};
+		};
 
 		class GradeTooLowException : public std::exception
-    	{
-        	public:
-            	GradeTooLowException(void) {};
-            	virtual ~GradeTooLowException(void) throw() {};
-            	virtual const char* what() const throw()
+		{
+			public:
+				GradeTooLowException(void) {};
+				virtual ~GradeTooLowException(void) throw() {};
+				virtual const char* what() const throw()
 				{
 					return "This grade is too low, it will be set at 150";
 				};
-    	};
+		};
 
-		std::string			getName(void) const;
+		std::string	const	getName(void) const;
 		int					getGrade(void) const;
 		void 				checkGrade(int grade);
 	

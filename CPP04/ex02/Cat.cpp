@@ -2,7 +2,7 @@
 
 Cat::Cat(void) : _brain(new Brain())
 {
-	type = "Cat";
+	_type = "Cat";
 	std::cout << "Default Cat constructor called & brain allocated" << std::endl;
 }
 
@@ -26,7 +26,7 @@ Cat &	Cat::operator=(Cat const & rhs)
 		_brain = new Brain();
 		std::cout << "Old brain deleted, new brain allocated" << std::endl;
 		*_brain = *(rhs._brain);
-		type = rhs.type;
+		_type = rhs._type;
 	}
 	return *this;
 }

@@ -1,11 +1,12 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) : type("Cat"), _brain(new Brain())
+Cat::Cat(void) : _brain(new Brain())
 {
+	_type = "Cat";
 	std::cout << "Default Cat constructor called & brain allocated" << std::endl;
 }
 
-Cat::Cat(Cat const & src)
+Cat::Cat(Cat const & src) : _brain(new Brain())
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
 	*this = src;
@@ -25,14 +26,8 @@ Cat &	Cat::operator=(Cat const & rhs)
 		_brain = new Brain();
 		std::cout << "Old brain deleted, new brain allocated" << std::endl;
 		*_brain = *(rhs._brain);
-		type = rhs.type;
 	}
 	return *this;
-}
-
-std::string	Cat::getType(void) const
-{
-	return type;
 }
 
 void		Cat::makeSound(void) const

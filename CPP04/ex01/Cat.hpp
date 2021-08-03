@@ -12,16 +12,12 @@ class Cat : public Animal
 		Cat(Cat const & src);
 		~Cat(void);
 
-		virtual	Cat &		operator=(Cat const & rhs);
+		Cat &			operator=(Cat const & rhs);
 
-		virtual std::string	getType(void) const;
-		virtual void		makeSound(void) const;
-
-	protected:
-		std::string	type;
+		virtual void	makeSound(void) const;
 
 	private:
-		Brain		*_brain;
+		Brain			*_brain;
 };
 
 #endif

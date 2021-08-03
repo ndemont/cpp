@@ -1,41 +1,46 @@
 #include "Bureaucrat.hpp"
 
-/* CONSTRUCTORS & DESTRUCTORS */
-Bureaucrat::Bureaucrat(void) : _grade(150)
+Bureaucrat::Bureaucrat(void) : _name("unknown"), _grade(150)
 {
-	std::cout << "Default Bureaucrat constructor called: Unknown" << std::endl;
+	std::cout << "Default Bureaucrat constructor called: " << _name << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << "Default Bureaucrat constructor called: " << getName() << std::endl;
+	std::cout << "Bureaucrat constructor called: " << _name << std::endl;
 	try
 	{
 		checkGrade(grade);
 	}
 	catch(const std::exception& e) 
 	{
-        std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	} 
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : _name(src.getName()), _grade(src.getGrade()) 
 {
-	std::cout << "Copy Bureaucrat constructor called" << std::endl;
+	std::cout << "Copy Bureaucrat constructor called: " << _name << std::endl;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destructor called: " << _name << std::endl;
+
 }
 
-/* OPERATORS */
+Bureaucrat const &	Bureaucrat::operator=(Bureaucrat const & rhs)
+{
+	_grade = rhs.getGrade();
+	return *this;
+}
+
 
 Bureaucrat &	Bureaucrat::operator++(void)
 {
 	try
 	{
-		checkGrade(getGrade() - 1);
+		checkGrade(_grade - 1);
 	}
 	catch(const std::exception& e) 
 	{
@@ -56,7 +61,7 @@ Bureaucrat &	Bureaucrat::operator--(void)
 {
 	try
 	{
-		checkGrade(getGrade() + 1);
+		checkGrade(_grade + 1);
 	}
 	catch(const std::exception& e) 
 	{
@@ -79,8 +84,7 @@ std::ostream &	operator<<(std::ostream & o, Bureaucrat const & i)
 	return o;
 }
 
-/* GETTERS & SETTERS*/
-std::string		Bureaucrat::getName(void) const
+std::string	const	Bureaucrat::getName(void) const
 {
 	return _name;
 }
@@ -90,7 +94,6 @@ int			Bureaucrat::getGrade(void) const
 	return _grade;
 }
 
-/* METHODS */
 void	Bureaucrat::checkGrade(int grade)
 {
 	if (grade > 150)

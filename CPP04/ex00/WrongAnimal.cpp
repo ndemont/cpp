@@ -1,7 +1,7 @@
 #include "WrongAnimal.hpp"
 
 /* CONSTRUCTORS */
-WrongAnimal::WrongAnimal(void) : type("Generic WrongAnimal")
+WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
 {
 	std::cout << "Default WrongAnimal constructor called" << std::endl;
 }
@@ -23,23 +23,23 @@ WrongAnimal &	WrongAnimal::operator=(WrongAnimal const & rhs)
 	std::cout << "Assignation operator called" << std::endl;
 
 	if (this != &rhs)
-		type = rhs.type;
+		_type = rhs._type;
 	return *this;
 }
 
 std::string	WrongAnimal::getType(void) const
 {
-	return type;
+	return _type;
 }
 
 void		WrongAnimal::makeSound(void) const 
 {
-	std::cout << "*Weird animal sound resonating in the wind*" << std::endl;
+	std::cout << "* Weird animal sound resonating in the wind *" << std::endl;
 }
 
 
 std::ostream &	operator<<(std::ostream & o, WrongAnimal const & i)
 {
-	(void)i;
+	o << i.getType();
 	return o;
 }

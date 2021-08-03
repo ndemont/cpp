@@ -9,6 +9,7 @@ Cure::Cure(void)
 
 Cure::Cure(Cure const & src)
 {
+	_type = "cure";
 	std::cout << "Copy Cure constructor called" << std::endl;
 	*this = src;
 }
@@ -18,16 +19,13 @@ Cure::~Cure(void)
 	std::cout << "Cure destructor called" << std::endl;
 }
 
-/* OPERATORS */
 Cure const & Cure::operator=(Cure const & rhs)
 {
 	std::cout << "Cure assignation operator called" << std::endl;
-	if (this != &rhs)
-		_type = rhs._type;
+	(void)rhs;
 	return *this;
 }
 
-/* METHODS */
 AMateria*	Cure::clone(void) const
 {
 	AMateria *newCure = new Cure();
