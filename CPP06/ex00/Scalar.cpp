@@ -173,9 +173,20 @@ bool	Scalar::isChar(std::string str)
 
 bool	Scalar::isInt(std::string str)
 {
+	int i = 0;
+
 	try {
 		_i = std::stoi(str);
 	} catch(const std::exception& e) {
+		_intError = "impossible";
+		return false;
+	}
+	if (str[0] == '-' || str[0] == '+')
+		i++;
+	while (isNumeric(str[i]))
+		i++;
+	if (str[i])
+	{
 		_intError = "impossible";
 		return false;
 	}
@@ -200,6 +211,7 @@ bool	Scalar::isDouble(std::string str)
 		_d = std::stod(str);
 	} catch(const std::exception& e) {
 		_doubleError = "impossible";
+		_charError = "impossible";
 		return false;
 	}
 	float	mod = modf(_d, &mod);
