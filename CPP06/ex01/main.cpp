@@ -22,7 +22,5 @@ int		main(void)
 	std::cout << "Final value of content:      " << *f2 << std::endl;
 	
 	delete data1;
-	delete data2;
-
 	return 0;
 }
