@@ -9,23 +9,23 @@ class	Array
 	public:
 		Array<T>(void) : _array(new T[0]), _size(0) 
 		{
-			std::cout << "Default const" << std::endl;
+			std::cout << "Default constructor called" << std::endl;
 			_array[0] = 0;
 		}
 		Array<T>(unsigned int size) : _array(new T[size]), _size(size)
 		{
-			std::cout << "By size const" << std::endl;
+			std::cout << "Constructor called with size" << std::endl;
 			for (unsigned int i = 0; i < _size; i++)
 				_array[i] = 0;
 		}
 		Array<T>(Array<T> const & src) : _array(new T[0])
 		{
-			std::cout << "Copy const" << std::endl;
+			std::cout << "Copy constructor called" << std::endl;
 			*this = src;
 		}
 		virtual ~Array<T>(void)
 		{
-			std::cout << "Dest" << std::endl;
+			std::cout << "Destructor called" << std::endl;
 			delete [] _array;
 		}
 
@@ -55,7 +55,7 @@ class	Array
 		{
 			try
 			{
-				if (idx >= this->size())
+				if (idx >= this->size() || idx < 0)
 					throw Array<T>::IndexOutsideArrayException();
 				else 
 					return _array[idx];
