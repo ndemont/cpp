@@ -1,4 +1,4 @@
-NAME		= base
+NAME		= iter
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c

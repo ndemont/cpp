@@ -21,11 +21,13 @@ int		main(void)
 	std::cout << "Function multiple of 2" << std::endl;
 	std::cout << "tab[0] (0 * 2) = " << tab[0] << std::endl;
 	std::cout << "tab[5] (5 * 2) = " << tab[5] << std::endl;
+	std::cout << "tab[5] (9 * 2) = " << tab[9] << std::endl;
 
 	iter<float>(tab2, len, &mult10);
 	std::cout << "Function multiple of 10" << std::endl;
 	std::cout << "tab2[0] (0 * 10) = " << tab2[0] << std::endl;
 	std::cout << "tab2[5] (5 * 10) = " << tab2[5] << std::endl;
+	std::cout << "tab2[9] (9 * 10) = " << tab2[9] << std::endl;
 
 	return 0;
 }
