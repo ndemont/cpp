@@ -15,9 +15,12 @@ int		main(void)
 	std::cout << "Initial adress of parameter: " << data1 << std::endl;
 	std::cout << "Initial value of content:    " << f1 << std::endl;
 	std::cout << std::endl;
+	
 	data2 = deserialize(i);
 	f2 = reinterpret_cast<float *>(data2->ptr);
-	std::cout << "Final adress of parameter: " << data2 << std::endl;
-	std::cout << "Final value of content:    " << *f2 << std::endl;
+	std::cout << "Final adress of parameter:   " << data2 << std::endl;
+	std::cout << "Final value of content:      " << *f2 << std::endl;
+	
+	delete data1;
 	return 0;
 }

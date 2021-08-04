@@ -35,7 +35,7 @@ void	identify_from_pointer(Base * p)
 	try
 	{
 		A base = dynamic_cast<A &>(*p);
-		std::cout << "Indentification form pointer: A" << std::endl;
+		std::cout << "A" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -44,7 +44,7 @@ void	identify_from_pointer(Base * p)
 	try
 	{
 		B base = dynamic_cast<B &>(*p);
-		std::cout << "Indentification form pointer: B" << std::endl;
+		std::cout << "B" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -53,7 +53,7 @@ void	identify_from_pointer(Base * p)
 	try
 	{
 		C base = dynamic_cast<C &>(*p);
-		std::cout << "Indentification form pointer: C" << std::endl;
+		std::cout << "C" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -67,8 +67,9 @@ void	identify_from_reference(Base & p)
 {
 	try
 	{
+		//Base P = dynamic_cast<Base>(p);
 		A base = dynamic_cast<A &>(p);
-		std::cout << "Indentification form reference: A" << std::endl;
+		std::cout << "A" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -77,7 +78,7 @@ void	identify_from_reference(Base & p)
 		try
 	{
 		B base = dynamic_cast<B &>(p);
-		std::cout << "Indentification form reference: B" << std::endl;
+		std::cout << "B" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
@@ -86,7 +87,7 @@ void	identify_from_reference(Base & p)
 		try
 	{
 		C base = dynamic_cast<C &>(p);
-		std::cout << "Indentification form reference: C" << std::endl;
+		std::cout << "C" << std::endl;
 		return ;
 	}
 	catch(const std::exception& e)
