@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 # include <cmath> 
-#include <ctgmath>
+# include <ctgmath>
 # include <sstream>
 
 class Scalar
