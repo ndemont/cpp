@@ -14,4 +14,5 @@ int main()
 	sp.addRange(list.begin(), list.end());
 	sp.addRange(list.begin(), list.end());
 	std::cout << sp.longestSpan() << std::endl;
+	
 }
