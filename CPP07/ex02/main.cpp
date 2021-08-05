@@ -49,6 +49,11 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
+	for (int i = 0; i < 100; i++)
+    {
+        std::cout << numbers[i] << std::endl;
+    }
     delete [] mirror;//
+    Array<char *> ideas(10);
     return 0;
 }

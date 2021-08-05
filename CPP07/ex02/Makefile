@@ -1,4 +1,4 @@
-NAME		= base
+NAME		= array
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c

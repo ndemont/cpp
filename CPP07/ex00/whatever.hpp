@@ -24,4 +24,5 @@ void swap( T & x, T & y)
 	x = y;
 	y = z;
 }
+
 #endif

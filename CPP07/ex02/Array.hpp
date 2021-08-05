@@ -2,30 +2,27 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <cstdlib>
 
 template< typename T >
 class	Array
 {
 	public:
-		Array<T>(void) : _array(new T[0]), _size(0) 
+		Array<T>(void) : _array(new T[1]), _size(0) 
 		{
-			std::cout << "Default constructor called" << std::endl;
 			_array[0] = 0;
 		}
 		Array<T>(unsigned int size) : _array(new T[size]), _size(size)
 		{
-			std::cout << "Constructor called with size" << std::endl;
 			for (unsigned int i = 0; i < _size; i++)
 				_array[i] = 0;
 		}
 		Array<T>(Array<T> const & src) : _array(new T[0])
 		{
-			std::cout << "Copy constructor called" << std::endl;
 			*this = src;
 		}
 		virtual ~Array<T>(void)
 		{
-			std::cout << "Destructor called" << std::endl;
 			delete [] _array;
 		}
 
@@ -64,7 +61,7 @@ class	Array
 			{
 				std::cerr << e.what() << std::endl;
 			}
-			return _array[this->size()];
+			return _array[this->size() -1];
 		}
 		
 
