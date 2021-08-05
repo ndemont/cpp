@@ -2,6 +2,9 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <list>
+# include <vector>
+# include <algorithm>
 
 class Span 
 {
@@ -13,26 +16,26 @@ class Span
 
 		Span const & 	operator=(Span const & rhs);
 	
-		void			addNumber(unsigned int nb);
-		unsigned int	size(void) const;
+		void			addNumber(int nb);
 
-		Span const & shortestSpan(void);
-		Span const & longestSpan(void);
+		int	shortestSpan(void);
+		int	longestSpan(void);
 
-		class SpanIsFullException {
+		class SpanError: public std::exception{
 			public:
-        		SpanIsFullException(void) {};
-       			virtual ~SpanIsFullException(void) throw() {};
+        		SpanError(void) {};
+       			virtual ~SpanError(void) throw() {};
        			virtual const char* what() const throw()
 				{				
-					return "This Span is already full.";
+					return "Span error.";
 				}
 		};
 
 	private:
-		unsigned int 	*_storage;
+		std::list<int>	_storage;
 		unsigned int 	_size;
-		unsigned int 	_stored;
+		unsigned long 	_shortest;
+		unsigned long 	_longest;
 };
 
 

@@ -1,13 +1,11 @@
 #include "span.hpp"
 
-	Span::Span(void) : _storage(new unsigned int[0]) , _size(0), _stored(0)
+	Span::Span(void) : _size(0), _shortest(4294967295), _longest(0)
 	{
-		std::cout << "Default Span constructor called" << std::endl;
 	}
 
-	Span::Span(unsigned int N) : _storage(new unsigned int[N]), _size(N), _stored(0)
+	Span::Span(unsigned int N) : _size(N), _shortest(4294967295), _longest(0)
 	{
-		std::cout << "Span constructor called for " << N << " elements" << std::endl;
 	}
 
 	Span::Span(Span const & src)
@@ -18,46 +16,60 @@
 		
 	Span::~Span(void)
 	{
-		delete [] _storage;
-		std::cout << "Span destructor called" << std::endl;
 	}
 
 	Span const & Span::operator=(Span const & rhs)
 	{
-		delete [] _storage;
-
-		_storage = new unsigned int[rhs.size()];
-		for (unsigned int i = 0; i < rhs.size(); i++)
-			_storage[i] = rhs._storage[i];
-		
+		_size = rhs._size;
+		_storage = rhs._storage;
+		_longest = rhs._longest;
+		_shortest = rhs._shortest;
 		return *this;
 	}
 
-	void	Span::addNumber(unsigned int nb)
+	void	Span::addNumber(int nb)
 	{
-		try {
-			if (_stored > _size)
+		std::list<int>::iterator begin;
+		std::list<int>::iterator end;
+
+		try 
+		{
+			if (_storage.size() == _size)
+			{
 				throw SpanIsFullException();
-			else {
-				_storage[_stored] = nb;
-				_stored++;
 			}
-		} catch(const std::exception & e) {
+			else 
+			{
+				begin = _storage.begin();
+				end = _storage.end();
+				if (static_cast<unsigned long>(nb - *begin) < _shortest)
+						_shortest = static_cast<unsigned long>(nb - *begin);
+				if (begin != end)
+					begin++;
+				while (begin != end)
+				{
+					if (static_cast<unsigned long>(nb - *begin) < _shortest)
+						_shortest = nb - *begin;
+					begin++;
+				}
+				_storage.push_front(nb);
+				_storage.sort();
+				if (static_cast<unsigned long>(_storage.back() - _storage.front()) > _longest)
+					_longest = (_storage.back()) - _storage.front();
+			}
+		} 
+		catch(const std::exception & e) 
+		{
 			std::cerr << e.what() << std::endl;
 		}
 	}
 
-	unsigned int	Span::size(void) const
+	int	Span::longestSpan(void)
 	{
-		return _size;
+		return _longest;
 	}
 
-	Span const & Span::longestSpan(void)
+	int	Span::shortestSpan(void)
 	{
-		return *this;
-	}
-
-	Span const & Span::shortestSpan(void)
-	{
-		return *this;
+		return _shortest;
 	}
