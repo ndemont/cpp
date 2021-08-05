@@ -2,20 +2,16 @@
 
 int main()
 {
-	Span sp = Span(2);
-	sp.addNumber(5);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	Span err(5);
-    err.addNumber(1);
-    err.addNumber(142);
-    err.addNumber(100);
-    err.addNumber(121);
-    err.addNumber(122);
-    std::cout << err.shortestSpan() << std::endl;
-    std::cout << err.longestSpan() << std::endl;
-	std::cout << sp.shortestSpan() << std::endl;
+	Span sp = Span(10000000);
+	std::list<int>	list;
+	int j;
+
+	for (int i = 0; i < 10000000; i++)
+	{
+		j = rand() % 1000;
+		list.push_back(j);
+	}
+	sp.addRange(list.begin(), list.end());
+	sp.addRange(list.begin(), list.end());
 	std::cout << sp.longestSpan() << std::endl;
 }

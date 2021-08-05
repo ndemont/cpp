@@ -11,12 +11,15 @@ class Span
 	public:
 		Span(void);
 		Span(unsigned int N);
+		Span(std::list<int>::iterator begin, std::list<int>::iterator end);
 		Span(Span const & src);
 		virtual ~Span(void);
 
 		Span const & 	operator=(Span const & rhs);
 	
-		void			addNumber(int nb);
+		void		addNumber(int nb);
+		void		addRange(std::list<int>::iterator begin, std::list<int>::iterator end);
+
 
 		int	shortestSpan(void);
 		int	longestSpan(void);
@@ -36,6 +39,7 @@ class Span
 		unsigned int 	_size;
 		unsigned long 	_shortest;
 		unsigned long 	_longest;
+		bool			_error;
 };
 
 
