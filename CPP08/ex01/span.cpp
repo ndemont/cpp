@@ -1,14 +1,14 @@
 #include "span.hpp"
 
-	Span::Span(void) : _size(0), _shortest(4294967295), _longest(0), _error(false)
+	Span::Span(void) : _shortest(MAX_INT_SPAN), _longest(0), _size(0), _error(false)
 	{
 	}
 
-	Span::Span(unsigned int N) : _size(N), _shortest(4294967295), _longest(0), _error(false)
+	Span::Span(unsigned int N) : _shortest(MAX_INT_SPAN), _longest(0), _size(N), _error(false)
 	{
 	}
 
-	Span::Span(std::list<int>::iterator begin, std::list<int>::iterator end) : _shortest(4294967295), _longest(0), _error(false)
+	Span::Span(std::list<int>::iterator begin, std::list<int>::iterator end) : _shortest(MAX_INT_SPAN), _longest(0), _error(false)
 	{
 		while (begin != end)
 		{
@@ -35,6 +35,7 @@
 		_storage = rhs._storage;
 		_longest = rhs._longest;
 		_shortest = rhs._shortest;
+		_error = rhs._error;
 		return *this;
 	}
 
@@ -74,7 +75,7 @@
 		if (_storage.size() <= 1)
 			throw SpanError();
 		_storage.sort();
-		if (static_cast<unsigned long>(_storage.back() - _storage.front()) > _longest)
+		if (static_cast<unsigned long>(_storage.back()) - static_cast<unsigned long>(_storage.front()) > _longest)
 		{
 			_longest = (_storage.back()) - _storage.front();
 		}
@@ -96,7 +97,7 @@
 			next++;
 		while (next != end)
 		{
-			if (static_cast<unsigned long>(*next - *begin) < _shortest)
+			if (static_cast<unsigned long>(*next) - static_cast<unsigned long>(*begin) < _shortest)
 				_shortest = *next - *begin;
 			begin = next;
 			next++;

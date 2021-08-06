@@ -6,6 +6,8 @@
 # include <vector>
 # include <algorithm>
 
+# define MAX_INT_SPAN 4294967295
+
 class Span 
 {
 	public:
@@ -26,9 +28,9 @@ class Span
 
 		class SpanError: public std::exception{
 			public:
-        		SpanError(void) {};
-       			virtual ~SpanError(void) throw() {};
-       			virtual const char* what() const throw()
+				SpanError(void) {};
+				virtual ~SpanError(void) throw() {};
+				virtual const char* what() const throw()
 				{				
 					return "Span error.";
 				}
@@ -36,9 +38,9 @@ class Span
 
 	private:
 		std::list<int>	_storage;
-		unsigned int 	_size;
 		unsigned long 	_shortest;
 		unsigned long 	_longest;
+		unsigned int 	_size;
 		bool			_error;
 };
 
