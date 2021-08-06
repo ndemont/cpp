@@ -1,4 +1,4 @@
-NAME		= base
+NAME		= easyfind
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c

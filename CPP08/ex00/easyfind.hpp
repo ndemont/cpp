@@ -16,10 +16,10 @@
 
 class ValueNotFoundException : public std::exception
 {
-    public:
-        ValueNotFoundException(void) {};
-       	virtual ~ValueNotFoundException(void) throw() {};
-       	virtual const char* what() const throw()
+	public:
+		ValueNotFoundException(void) {};
+		virtual ~ValueNotFoundException(void) throw() {};
+		virtual const char* what() const throw()
 		{				
 			return "has no occurence in this container.";
 		}
