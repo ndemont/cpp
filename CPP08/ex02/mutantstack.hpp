@@ -11,7 +11,7 @@ class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack<T>(void) {};
-		MutantStack<T>(MutantStack<T> const & src) 
+		MutantStack<T>(MutantStack<T> const & src)
 		{
 			if (this != &src)
 			*this = src;
@@ -20,7 +20,7 @@ class MutantStack : public std::stack<T>
 
 		MutantStack<T> const &	operator=(MutantStack<T> const & rhs)
 		{
-			(void)rhs;
+			_list = rhs._list;
 			return *this;
 		}
 
@@ -48,15 +48,18 @@ class MutantStack : public std::stack<T>
 				{
 					_it = src._it;
 				}
-				~iterator(void);
-				iterator const & operator=(iterator const & rhs);
-
+				~iterator(void) {};
+				iterator const & operator=(iterator const & rhs)
+				{
+					_it = rhs._it;
+					return *this;
+				}
 				iterator &	operator++(void)
 				{
 					_it++;
 					return *this;
 				}
-				iterator 	operator++(int)
+				iterator	operator++(int)
 				{
 					++_it;
 					return this;
@@ -71,9 +74,9 @@ class MutantStack : public std::stack<T>
 					--_it;
 					return this;
 				}
-				typename std::list<T>::iterator&	operator*(void)
+				T	operator*(void)
 				{
-					return _it::reference;
+					return *_it;
 				}
 
 				bool	operator!=(iterator const & rhs)
@@ -81,32 +84,23 @@ class MutantStack : public std::stack<T>
 					return (_it != rhs._it);
 				}
 
+			private:
 				typename std::list<T>::iterator	_it;
 		};
 
 		iterator	begin(void)
 		{
-			_myIterator = iterator(_list.begin());
-			return _myIterator;
+			return (iterator(_list.begin()));
 		}
 
 		iterator	end(void)
 		{
-			_myIterator = iterator(_list.end());
-			return _myIterator;
+			return (iterator(_list.end()));
 		}
 	
-		iterator		_myIterator;
 
 	private:
 		std::list<T>	_list;
 };
-
-// template < typename T >
-// std::ostream &	operator<<(std::ostream & o, typename MutantStack<T>::iterator const & i)	
-// {
-// 	o << i._it << std::endl;
-// 	return o;
-// }
 
 #endif

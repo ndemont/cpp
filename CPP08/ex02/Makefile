@@ -1,4 +1,4 @@
-NAME		= base
+NAME		= mutant
 CC			= clang++
 RM			= rm -rf
 CLEAR		= \033[2K\c
